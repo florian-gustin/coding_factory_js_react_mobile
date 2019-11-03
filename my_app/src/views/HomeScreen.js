@@ -1,33 +1,35 @@
 //This is an example code for Bottom Navigation//
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 
 //import react in our code.
 import { Text, View, TouchableOpacity, StyleSheet, SafeAreaView, Button, FlatList } from 'react-native';
-import Searchbar from '../components/Searchbar';
+import Search from '../components/Search';
 import Card from '../components/Card';
 import {ScrollView} from 'react-navigation';
+import {User} from '../contexts/UserContext';
 //import all the basic component we have used
 
 
 
 const HomeScreen = () => {
-  const [foo, setFoo] = useState(30);
+
+  let { state, dispatch } = useContext(User);
+
+  const [text, setText] = useState(null);
 
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    if (foo >= 42) {
-      setFoo(42);
-    }
-  }, [foo])
+    setText(state.searchedText)
+  }, [state.searchedText])
 
   return (
     <ScrollView style={{ }}>
       <View style={styles.box}>
-        <Searchbar/>
+          <Search/>
       </View>
-
+      <Text>{text}</Text>
       <View style={styles.box}>
         <Card/>
       </View>
