@@ -1,15 +1,20 @@
 //This is an example code for Bottom Navigation//
 import React, { useState, useEffect} from 'react';
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
+
 //import react in our code.
 import { Text, View, TouchableOpacity, StyleSheet, SafeAreaView, Button, FlatList } from 'react-native';
 import Searchbar from '../components/Searchbar';
 import Card from '../components/Card';
+import {ScrollView} from 'react-navigation';
 //import all the basic component we have used
 
 
 
 const HomeScreen = () => {
   const [foo, setFoo] = useState(30);
+
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     if (foo >= 42) {
@@ -18,11 +23,17 @@ const HomeScreen = () => {
   }, [foo])
 
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <ScrollView style={{ }}>
       <View style={styles.box}>
         <Searchbar/>
       </View>
 
+      <View style={styles.box}>
+        <Card/>
+      </View>
+      <View style={styles.box}>
+        <Card/>
+      </View>
       <View style={styles.box}>
         <Card/>
       </View>
@@ -45,7 +56,7 @@ const HomeScreen = () => {
       {/*  <Text>Foo is {foo}.</Text>*/}
       {/*  <Button onPress={() => setFoo(foo + 1)} title='Increase Foo!' />*/}
       {/*</View>*/}
-    </SafeAreaView>
+    </ScrollView>
 
   )
 }

@@ -70,7 +70,7 @@ const App = createBottomTabNavigator(
         let iconName;
         if (routeName === 'Home') {
           iconName = `ios-home`;
-        } else if (routeName === 'Profile') {
+        } else if (routeName === 'Profile', {idSelected: 12}) {
           iconName = `ios-star`;
         }
         return <IconComponent name={iconName} size={25} color={tintColor} />;
