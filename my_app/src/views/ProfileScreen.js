@@ -1,16 +1,31 @@
 //This is an example code for Bottom Navigation//
-import React from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 //import react in our code.
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { FlatList, SafeAreaView, Text,  } from 'react-native';
+import {User} from '../contexts/UserContext';
+import Card from 'react-native-paper';
+import Favorite from '../components/Favorite';
 //import all the basic component we have used
 
-export default class ProfileScreen extends React.Component {
-  //Profile Screen to show from Open profile button
-  render() {
+const ProfileScreen = () => {
+
+  let { state, dispatch } = useContext(User);
+
+  function listOfFavorites() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Profile!</Text>
-      </View>
-    );
+      <FlatList
+        data={state.myFavorites}
+        renderItem={({item}) => <Favorite item={item}/> }
+        keyExtractor={item => item.id.toString()}
+      />
+    )
   }
+
+  return(
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      {listOfFavorites()}
+    </SafeAreaView>
+  )
 }
+
+export default ProfileScreen;

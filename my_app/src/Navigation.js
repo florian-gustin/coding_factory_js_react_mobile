@@ -18,7 +18,6 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import HomeScreen from './views/HomeScreen';
-import SettingsScreen from './views/SettingsScreen';
 import DetailsScreen from './views/DetailsScreen';
 import ProfileScreen from './views/ProfileScreen';
 

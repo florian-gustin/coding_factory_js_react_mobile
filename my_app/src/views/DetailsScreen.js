@@ -12,13 +12,13 @@ import Video from 'react-native-video';
 const DetailsScreen = () => {
   const {navigate} = useNavigation();
 
-  const currentId = useNavigationParam('currentId');
+  const data = useNavigationParam('data');
 
-  console.log(currentId);
+  console.log(data.poster_path);
 
   return (
     <ScrollView style={{ flex: 1, width: '100%', padding: 5 }}>
-      <ImageBackground source={{ uri: 'https://picsum.photos/700' }} style={{width: '100%', height: '100%'}}>
+      <ImageBackground source={{ uri: data.poster }} style={{width: '100%', height: 400}}>
       <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
         <IconButton
           icon="star-outline"
@@ -29,19 +29,19 @@ const DetailsScreen = () => {
       </View>
       </ImageBackground>
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
-        <Text style={{fontSize: 20}}>Harry Potter</Text>
-        <Text style={{fontSize: 14}}>2018</Text>
+        <Text style={{fontSize: 20}}>{data.title}</Text>
+        <Text style={{fontSize: 14}}>{data.date}</Text>
       </View>
       <Divider></Divider>
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 12, backgroundColor: 'gray'}}>
-        <Text style={{fontSize: 10, color: 'white'}}>Movie : Magic, SF</Text>
-        <Text style={{fontSize: 12, fontStyle: 'italic', color: 'white'}}>Steven Spielberg</Text>
+        <Text style={{fontSize: 10, color: 'white'}}>{data.popularity}</Text>
+        <Text style={{fontSize: 12, fontStyle: 'italic', color: 'white'}}>{data.vote_average}</Text>
       </View>
       <Divider></Divider>
       <View style={{padding: 10}}>
         <Paragraph style={{lineHeight: 22}}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          {data.content}
         </Paragraph>
       </View>
       {/*<Video source={{uri: "background"}}   // Can be a URL or a local file.*/}

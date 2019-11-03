@@ -4,9 +4,7 @@ let User = React.createContext();
 
 let initialState = {
   searchedText: "Avengers",
-  favoriteMovies: [],
-  favoriteSeries: [],
-  favoriteAnimes: [],
+  myFavorites: [],
 };
 
 let reducer = (state, action) => {
@@ -16,12 +14,8 @@ let reducer = (state, action) => {
       return initialState;
     case "updateSearchedText":
       return { ...state, searchedText: action.payload };
-    case "updateFavoriteMovies":
-      return { ...state, favoriteMovies: action.payload };
-    case "updateFavoriteSeries":
-      return { ...state, favoriteSeries: action.payload };
-    case "updateFavoriteAnimes":
-      return { ...state, favoriteAnimes: action.payload };
+    case "updateMyFavorites":
+      return { ...state, myFavorites: action.payload };
   }
 };
 

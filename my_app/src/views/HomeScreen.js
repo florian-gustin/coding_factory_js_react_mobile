@@ -8,57 +8,71 @@ import Search from '../components/Search';
 import Card from '../components/Card';
 import {ScrollView} from 'react-navigation';
 import {User} from '../contexts/UserContext';
+import {getFilmsFromSearchedText} from '../components/Api';
 //import all the basic component we have used
-
-
 
 const HomeScreen = () => {
 
   let { state, dispatch } = useContext(User);
 
-  const [text, setText] = useState(null);
+  const [data, setData] = useState(null);
 
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    setText(state.searchedText)
+    if(state.searchedText) {
+     loadingData()
+    }
   }, [state.searchedText])
 
+  const loadingData = () => {
+    getFilmsFromSearchedText(state.searchedText).then(data => {
+
+      let resp = data.results;
+      let concatPosterPath = "http://image.tmdb.org/t/p/w1280/"
+      let list = []
+
+      for(let i = 0; i < resp.length ; i++) {
+        let dateTmp = resp[i].release_date
+        let dateFormat = dateTmp.substring(0, 4)
+          let format = {
+            id: resp[i].id,
+            title: resp[i].original_title,
+            date : dateFormat,
+            vote_average : resp[i].vote_average,
+            popularity: resp[i].popularity,
+            content : resp[i].overwiew,
+            poster: concatPosterPath+""+resp[i].poster_path,
+          }
+          list.push(format);
+      }
+      setData(list)
+    });
+  }
+
+  const cardGenerator = () => {
+    if(data!=null) {
+      return (
+        <FlatList
+          data={data}
+          renderItem={({item}) => <Card item={item}/> }
+          keyExtractor={item => item.id.toString()}
+        />
+      )
+    }
+  }
+
   return (
-    <ScrollView style={{ }}>
+    <SafeAreaView style={{flex: 1 }}>
       <View style={styles.box}>
           <Search/>
       </View>
-      <Text>{text}</Text>
       <View style={styles.box}>
-        <Card/>
       </View>
       <View style={styles.box}>
-        <Card/>
+        {cardGenerator()}
       </View>
-      <View style={styles.box}>
-        <Card/>
-      </View>
-
-      <FlatList/>
-      {/*<View*/}
-      {/*  style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>*/}
-      {/*  /!*<TouchableOpacity*!/*/}
-      {/*  /!*  style={styles.button}*!/*/}
-      {/*  /!*  onPress={() => this.props.navigation.navigate('Settings')}>*!/*/}
-      {/*  /!*  <Text>Go to settng Tab</Text>*!/*/}
-      {/*  /!*</TouchableOpacity>*!/*/}
-      {/*  /!*<TouchableOpacity*!/*/}
-      {/*  /!*  style={styles.button}*!/*/}
-      {/*  /!*  onPress={() => this.props.navigation.navigate('Details')}>*!/*/}
-      {/*  /!*  <Text>Open Details Screen</Text>*!/*/}
-      {/*  /!*</TouchableOpacity>*!/*/}
-      {/*</View>*/}
-      {/*<View>*/}
-      {/*  <Text>Foo is {foo}.</Text>*/}
-      {/*  <Button onPress={() => setFoo(foo + 1)} title='Increase Foo!' />*/}
-      {/*</View>*/}
-    </ScrollView>
+    </SafeAreaView>
 
   )
 }
