@@ -24,7 +24,7 @@ const MyComponent = ({item}) => {
 
   function findEquals() {
     let myBool;
-    if(state.myFavorites) {
+    if(!state.myFavorites) {
       for(let i = 0; i < state.myFavorites.length; i++) {
         console.log("mon store "+state.myFavorites[i].id)
         console.log("mon current "+item.id)
