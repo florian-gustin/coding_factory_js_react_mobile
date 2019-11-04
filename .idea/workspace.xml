@@ -2,11 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/coding_factory_js_react_mobile.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.buckconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.flowconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.prettierrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/.watchmanconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/__tests__/App-test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/BUCK" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/build_defs.bzl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/debug.keystore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/java/com/exercices/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/java/com/exercices/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices-tvOS/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices-tvOSTests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices.xcodeproj/xcshareddata/xcschemes/exercices-tvOS.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices.xcodeproj/xcshareddata/xcschemes/exercices.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/AppDelegate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/AppDelegate.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/Base.lproj/LaunchScreen.xib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/Images.xcassets/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercices/main.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercicesTests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/ios/exercicesTests/exercicesTests.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/metro.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exercices/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,9 +75,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_app/package.json">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/exercices/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -48,11 +117,6 @@
               <item name="coding_factory_js_react_mobile" type="b2602c69:ProjectViewProjectNode" />
               <item name="coding_factory_js_react_mobile" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="coding_factory_js_react_mobile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coding_factory_js_react_mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="my_app" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -62,6 +126,12 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -87,12 +157,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572857750402</updated>
-      <workItem from="1572857754255" duration="862000" />
+      <workItem from="1572857754255" duration="2205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="862000" />
+    <option name="totallyTimeSpent" value="2205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="728" extended-state="6" />
@@ -121,7 +191,18 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_app/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exercices/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
