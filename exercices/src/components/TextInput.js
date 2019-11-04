@@ -2,9 +2,10 @@ import React,{ useState } from 'react';
 import { TextInput } from 'react-native-paper';
 
 
-const MyComponent = ({callbackFromExercice, data}) => {
+const MyComponent = ({callbackFromExercice, callbackCount, data}) => {
 
     const callback = callbackFromExercice;
+    const count = callbackCount;
     const text = data;
 
     return (
@@ -13,7 +14,8 @@ const MyComponent = ({callbackFromExercice, data}) => {
             mode="outlined"
             label='Your answer is'
             onChangeText={(text) => {
-               callbackFromExercice(text);
+               callback(text);
+               count(text);
             }}
         />
         )
