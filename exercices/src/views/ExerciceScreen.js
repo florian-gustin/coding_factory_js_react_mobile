@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {SafeAreaView} from 'react-native'
+import {Text} from "react-native-paper";
+import {SafeAreaView, View} from 'react-native'
 import TextInput from '../components/TextInput.js'
 import TextDisplay from "../components/TextDisplay";
 
@@ -21,13 +22,13 @@ const ExerciceScreen = () => {
 
     function logicalOperation() {
         let msg = "";
-        if(text == "") 
+        if(text == "")
             return;
 
         if(text < numberToFind) {
-            msg = "This number is too small compare to answer"
+            msg = "too small"
         }else if(text > numberToFind) {
-            msg = "This number is too big compare to answer"
+            msg = "TOO BIG"
         }else if(text == numberToFind) {
             msg = "Congratulations dude";
         }else {
@@ -39,12 +40,33 @@ const ExerciceScreen = () => {
 
     }
 
+    function createRow(value) {
+        return(
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+                {value}
+            </View>
+        )
+    }
+
     return(
-        <SafeAreaView>
-            <TextInput
-                callbackFromExercice={handleChange}
-            />
-            <TextDisplay logicalOperationProp={logicalOperation()} />
+        <SafeAreaView style={{flex: 1, padding: 10, justifyContent: 'space-around', flexDirection: 'column'}}>
+            {createRow(
+                <Text style={{fontSize: 30, color: 'indigo', fontWeight: 'bold', textTransform: 'uppercase'}}>Game : "Yes or No"</Text>
+            )}
+            {createRow(
+                <Text style={{fontSize: 12, color: 'gray', fontStyle: 'italic'}}>Find the right NUMBER between 1 and 10 !</Text>
+            )}
+            {createRow(
+                <View style={{width: '50%'}}>
+                    <TextInput
+                        callbackFromExercice={handleChange}
+                        data={text}
+                    />
+                </View>
+            )}
+            {createRow(
+                <TextDisplay logicalOperationProp={logicalOperation()} />
+            )}
         </SafeAreaView>
     )
 }

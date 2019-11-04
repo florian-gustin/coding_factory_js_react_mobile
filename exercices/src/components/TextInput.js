@@ -2,15 +2,16 @@ import React,{ useState } from 'react';
 import { TextInput } from 'react-native-paper';
 
 
-const MyComponent = ({callbackFromExercice}) => {
+const MyComponent = ({callbackFromExercice, data}) => {
 
     const callback = callbackFromExercice;
-
-
+    const text = data;
 
     return (
         <TextInput
-            label='Email'
+            value={text}
+            mode="outlined"
+            label='Your answer is'
             onChangeText={(text) => {
                callbackFromExercice(text);
             }}
