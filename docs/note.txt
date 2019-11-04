@@ -1,0 +1,40 @@
+1 note pour chaque étudiant du groupe dont vous même
+1 note global pour le groupe
+
+Travail d'équipe (0; 0,5; 1; 1,5; 2) :
+Communication, cohésion et partage
+
+Bienveillant (0; 0,5; 1; 1,5; 2) :
+Aimable, sociable, indulgente
+
+Motivation (0; 0,5; 1; 1,5; 2) :
+Motiver, persévérence, sérieux
+
+Projet (0; 0,5; 1; 1,5; 2) :
+Implication, travail fourni, porteur d'idée et suggestion
+
+
+
+
+Question de groupe :
+
+Qu'elles ont été les difficultés principales ?
+
+Avez vous déjà utilisé cette techno ?
+
+Quel a été le ressenti global de la semaine ?
+
+À combien de pourcentage estimez vous que votre projet est terminé ?
+
+Quels sont les points encore obscure pour vous ?
+
+Avez vous des remarques ou des questions à dire sur la semaine ou votre projet ?
+
+Allez vous continuer ce projet ?
+
+Si oui quels sont les mises à jour / upgrade de prévu ?
+
+
+
+studio@angamara.fr
+
