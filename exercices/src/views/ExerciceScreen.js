@@ -21,46 +21,30 @@ const ExerciceScreen = () => {
 
     function logicalOperation() {
         let msg = "";
-        switch (text) {
-            case text < numberToFind:
-                msg = "This number is too small compare to answer"
-                break;
-            case text > numberToFind :
-                msg = "This number is too big compare to answer"
-                break;
-            case text == numberToFind:
-                msg = "Congratulations dude";
-                break;
+        if(text == "") 
+            return;
+
+        if(text < numberToFind) {
+            msg = "This number is too small compare to answer"
+        }else if(text > numberToFind) {
+            msg = "This number is too big compare to answer"
+        }else if(text == numberToFind) {
+            msg = "Congratulations dude";
+        }else {
+            msg = "";
         }
+        console.log("msg", msg);
 
         return msg;
 
     }
-
-    const logic= () => {
-        let msg = "";
-        switch (text) {
-            case text < numberToFind:
-                msg = "This number is too small compare to answer"
-                break;
-            case text > numberToFind :
-                msg = "This number is too big compare to answer"
-                break;
-            case text == numberToFind:
-                msg = "Congratulations dude";
-                break;
-        }
-
-        return msg;
-    }
-
 
     return(
         <SafeAreaView>
             <TextInput
                 callbackFromExercice={handleChange}
             />
-            <TextDisplay logicalOperationProp={() => logicalOperation()} />
+            <TextDisplay logicalOperationProp={logicalOperation()} />
         </SafeAreaView>
     )
 }
