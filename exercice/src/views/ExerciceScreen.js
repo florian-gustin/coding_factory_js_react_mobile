@@ -15,6 +15,9 @@ const ExerciceScreen = () => {
     const restart = () => {
         setText("")
         setCount(0)
+        setNumberToFind(() => {
+            return getRandomInt(10);
+        })
     }
 
     function getRandomInt(max) {
