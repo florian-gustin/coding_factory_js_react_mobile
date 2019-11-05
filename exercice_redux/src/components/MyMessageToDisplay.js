@@ -5,8 +5,8 @@ import {CustomRow} from '../helpers/CustomRow';
 import {useSelector} from 'react-redux';
 
 const TextDisplay = () => {
-    const text = useSelector(state => state.textReducer());
-    const winNumber = useSelector(state => state.numberToFindReducer());
+    const text = useSelector(state => state.textReducer);
+    const winNumber = useSelector(state => state.numberToFindReducer);
 
     const displayMessage = (text < winNumber) ? "Too fcking small dick" : (text > winNumber) ? "woaw, ur dick is fcking big" : "Spread me !!";
 
