@@ -27,6 +27,7 @@ import { createStore } from "redux";
 import allReducers from './src/reducers/'
 import { Provider } from 'react-redux'
 import ExerciceScreen from "./src/views/ExerciceScreen";
+import Navigation from "./src/navigations/Navigation";
 
 const store = createStore(allReducers)
 
@@ -34,7 +35,7 @@ const store = createStore(allReducers)
 const App: () => React$Node = () => {
   return (
       <Provider store={store}>
-        <ExerciceScreen/>
+        <Navigation/>
       </Provider>
   );
 };

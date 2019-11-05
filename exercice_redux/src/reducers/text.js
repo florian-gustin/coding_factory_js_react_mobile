@@ -1,10 +1,12 @@
 
 const textReducer = (state = "", action) => {
+    let newState = "";
     switch (action.type) {
         case "SET":
-            return state + action.payload
+            newState = action.payload;
+            return newState;
         case "CLEAR":
-            return state;
+            return newState;
         default:
             return state;
     }
