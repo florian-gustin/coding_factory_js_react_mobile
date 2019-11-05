@@ -11,15 +11,12 @@ const MyComponent = () => {
 
     function isValidNumber(text) {
         if (text != '' && text.length == 1) {
-            console.log("cédric");
-
             if (validateNumber(text) == true) {
                 dispatch(setText(text));
                 dispatch(increment());
             }
         }
         else if(text == '') {
-            console.log("florian");
             dispatch(clearText());
         }
     }
@@ -29,8 +26,6 @@ const MyComponent = () => {
         var isValid = regExp.test(strNumber); // or just: /^\d+$/.test(strNumber);
         return isValid;
     }
-
-    console.log("DorianIntoFlorian", text, counter);
 
   return (
     <TextInput

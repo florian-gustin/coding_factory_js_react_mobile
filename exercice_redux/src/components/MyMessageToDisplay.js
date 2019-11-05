@@ -2,13 +2,18 @@ import React, {useState} from 'react';
 import {Text} from 'react-native-paper';
 import {View, Image} from 'react-native';
 import {CustomRow} from '../helpers/CustomRow';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {isWin} from "../actions";
 
-const TextDisplay = () => {
+const MyComponent = () => {
     const text = useSelector(state => state.textReducer);
-    const winNumber = useSelector(state => state.numberToFindReducer);
+    const nbToFind = useSelector(state => state.numberToFindReducer);
+    const win = useSelector(state => state.winReducer);
 
-    const displayMessage = (text=="" ? "" : (text < winNumber) ? "Too fcking small dick" : (text > winNumber) ? "woaw, ur dick is fcking big" : "Spread me !!");
+    const dispatch = useDispatch();
+
+
+    const displayMessage = (text=="" ? "" : (text < nbToFind) ? "Too fcking small dick" : (text > nbToFind) ? "woaw, ur dick is fcking big" : "Spread me !!");
 
   function addImageToDisplayWhenSubmitted() {
       const folder = "../../assets/img/";
@@ -17,12 +22,17 @@ const TextDisplay = () => {
     }
     let path = '';
 
-    if(text < winNumber) {
+    if(text < nbToFind) {
         path = require(folder + 'tooSmall.jpg');
-    }else if(text > winNumber) {
+    }else if(text > nbToFind) {
         path = require(folder + 'tooBig.jpg');
     }else {
         path = require(folder + 'congratulations.jpg');
+    }
+
+
+    if(path==require(folder + 'congratulations.jpg')){
+        dispatch(isWin())
     }
     return CustomRow(
       <Image
@@ -39,6 +49,7 @@ const TextDisplay = () => {
       '25%',
     );
   }
+  console.log(win)
 
   return (
     <View>
@@ -48,4 +59,4 @@ const TextDisplay = () => {
   );
 };
 
-export default TextDisplay;
+export default MyComponent;

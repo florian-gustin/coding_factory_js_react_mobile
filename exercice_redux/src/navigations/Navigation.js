@@ -23,8 +23,7 @@ const TabNavigator = createBottomTabNavigator(
                 } else if (routeName === 'History') {
                     iconName = `ios-star`;
                 }
-                console.log(iconName);
-                return <IconComponent name="ios-home" size={25} color={tintColor} />;
+                return <IconComponent name={iconName} size={20} color={tintColor} />;
             },
         }),
         tabBarOptions: {

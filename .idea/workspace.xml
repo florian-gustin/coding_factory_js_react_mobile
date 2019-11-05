@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercice_redux/src/components/MyMessageToDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/components/MyMessageToDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/components/MyTextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/components/MyTextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/navigations/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/navigations/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/reducers/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/reducers/history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/reducers/numberToFind.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/reducers/numberToFind.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/views/ExerciceScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/views/ExerciceScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exercice_redux/src/views/HistoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/views/HistoryScreen.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +93,7 @@
       <workItem from="1572890624440" duration="3843000" />
       <workItem from="1572897270879" duration="12521000" />
       <workItem from="1572942792244" duration="8971000" />
-      <workItem from="1572979121209" duration="977000" />
+      <workItem from="1572979121209" duration="11955000" />
     </task>
     <servers />
   </component>

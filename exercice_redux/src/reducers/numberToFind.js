@@ -5,6 +5,7 @@ function getRandomInt(max) {
 const numberToFindReducer = (state = getRandomInt(9), action) => {
     switch (action.type) {
         case "RESET":
+            state = getRandomInt(9)
             return state;
         default:
             return state;
