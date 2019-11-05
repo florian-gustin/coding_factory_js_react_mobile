@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exercice_redux/src/components/MyMessageToDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/exercice_redux/src/components/MyMessageToDisplay.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,7 +84,7 @@
       <workItem from="1572890624440" duration="3843000" />
       <workItem from="1572897270879" duration="12521000" />
       <workItem from="1572942792244" duration="8971000" />
-      <workItem from="1572979121209" duration="369000" />
+      <workItem from="1572979121209" duration="806000" />
     </task>
     <servers />
   </component>

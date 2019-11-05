@@ -8,7 +8,7 @@ const TextDisplay = () => {
     const text = useSelector(state => state.textReducer);
     const winNumber = useSelector(state => state.numberToFindReducer);
 
-    const displayMessage = (text < winNumber) ? "Too fcking small dick" : (text > winNumber) ? "woaw, ur dick is fcking big" : "Spread me !!";
+    const displayMessage = (text=="" ? "" : (text < winNumber) ? "Too fcking small dick" : (text > winNumber) ? "woaw, ur dick is fcking big" : "Spread me !!");
 
   function addImageToDisplayWhenSubmitted() {
       const folder = "../../assets/img/";
