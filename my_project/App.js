@@ -8,13 +8,15 @@
 
 import React from 'react';
 import DrawerNavigation from './src/navigations';
+import SigninScreen from './src/views/SigninScreen';
+import SafeAreaView from 'react-native-safe-area-view';
 
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <DrawerNavigation />
-    </>
+    <SafeAreaView style={{alignItems: "center", justifyContent: "center"}}>
+      <SigninScreen />
+    </SafeAreaView>
   );
 };
 

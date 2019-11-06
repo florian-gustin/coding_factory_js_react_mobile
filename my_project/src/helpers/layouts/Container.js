@@ -1,16 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
-
-export function Row(value, {height = '', width = '', flex = '', justifyContent = '', alignItems = '', flexDirection = '', margin = '', padding = '', backgroundColor = ''}) {
+export function Container(value, {height = '', width = '', flex = '', justifyContent = '', alignItems = '', flexDirection = '', margin = '', padding = '', backgroundColor = ''} = {}) {
     return <View style={{
         height: height,
         width: width,
         flex: flex,
         justifyContent: justifyContent,
-        alignItems: alignItems,
+        alignItems: 400,
         flexDirection: flexDirection,
-        margin: margin,
-        padding: padding,
+        margin: 400,
+        padding: 400,
         backgroundColor: backgroundColor
     }}>{value}</View>;
 }

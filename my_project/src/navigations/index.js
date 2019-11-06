@@ -11,12 +11,12 @@ import MovieDetailScreen from "../views/MovieDetailScreen"
 import AboutScreen from "../views/AboutScreen"
 import ProfileScreen from "../views/ProfileScreen"
 
-const MyHamburger = () => (
+const MyHamburger = ({navigation}) => (
     <IconButton
         icon="menu"
         color={Colors.red500}
         size={20}
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigation.toggleDrawer()}
     />
 );
 
@@ -49,7 +49,7 @@ const MainStack = createStackNavigator({
     DrawerNavigator : {
         screen : DrawerNavigator,
         navigationOptions: ({ navigation }) => ({
-        header : MyHamburger
+        header : MyHamburger({navigation})
         })
     }
 });
