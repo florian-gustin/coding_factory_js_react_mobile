@@ -40,7 +40,8 @@ const usersReducer = (state = initialState, action) => {
             })
             tmpStateBis[index].username = getUpdate
             return tmpStateBis
-
+        default:
+            return state
     }
 }
 

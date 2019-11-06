@@ -10,3 +10,5 @@ const allReducers = combineReducers({
     favoritesListReducer,
     usersReducer
 })
+
+export default allReducers
