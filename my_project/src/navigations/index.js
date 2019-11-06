@@ -10,6 +10,8 @@ import HomeSearchScreen from "../views/HomeSearchScreen"
 import MovieDetailScreen from "../views/MovieDetailScreen"
 import AboutScreen from "../views/AboutScreen"
 import ProfileScreen from "../views/ProfileScreen"
+import SigninScreen from '../views/SigninScreen';
+import SingnupScreen from '../views/SignupScreen';
 
 const MyHamburger = ({navigation}) => (
     <IconButton
@@ -33,17 +35,12 @@ const DrawerNavigator = createDrawerNavigator({
     },
     About : {
         screen: AboutScreen
-    }
+    },
+    Signin: {
+        screen: SigninScreen,
+    },
 });
 
-const homeStack = createStackNavigator({
-    Home: {
-        screen: HomeSearchScreen,
-    },
-    Detail : {
-        screen: MovieDetailScreen
-    }
-});
 
 const MainStack = createStackNavigator({
     DrawerNavigator : {
@@ -51,6 +48,15 @@ const MainStack = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
         header : MyHamburger({navigation})
         })
+    },
+    Home: {
+        screen: HomeSearchScreen,
+    },
+    Detail : {
+        screen: MovieDetailScreen
+    },
+    Signup : {
+        screen: SingnupScreen
     }
 });
 

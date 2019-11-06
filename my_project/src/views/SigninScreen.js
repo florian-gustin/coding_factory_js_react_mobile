@@ -1,49 +1,63 @@
-import React from "react";
-import {View, Text, StyleSheet} from "react-native";
-import { TextInput } from 'react-native-paper';
-import { Container } from "../helpers/layouts/Container";
-
+import React, { Component } from 'react';
+import { View, ImageBackground, StyleSheet, Text } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 const styles = StyleSheet.create({
-    forgotPassword: {
+    background: {
+      flex: 1,
+      width: "100%"
+    },
+    container: {
+      flex: 1,
+      padding: 20,
       width: "100%",
-      alignItems: "flex-end",
-      marginBottom: 24
+      maxWidth: 340,
+      alignSelf: "center",
+      alignItems: "center",
+      justifyContent: "center"
     },
-    row: {
-      flexDirection: "row",
-      marginTop: 4
+    header : {
+        fontSize: 24,
+        color: "#9c27b0"
     },
-    label: {
-      color: theme.colors.secondary
-    },
-    link: {
-      fontWeight: "bold",
-      color: theme.colors.primary
-    }
+    text: {
+        width: "100%",
+        paddingBottom: 5
+      },
   });
 
-const SigninScreen = () => {
-    return (
-        <>
-        <View style={styles}>
-            <View style={{width: 100}}>
+const SigninScreen = ({navigation}) => {
+    return(
+        <ImageBackground
+        source={require("../assets/background.png")}
+        resizeMode="repeat"
+        style={styles.background}>
+            <View style={styles.container}> 
+                <Text style={styles.header}>Welcome back.</Text>
                 <TextInput
-                 placeholder={"Email"}
-                 />
-            </View>
-            <View>
+                    style={styles.text}
+                    label='Email'
+                    mode="outlined"
+                    selectionColor="#9c27b0"
+                    underlineColor="transparent"
+                />
                 <TextInput
-                 placeholder={"Email"}
-                 />
+                    style={styles.text}
+                    label='Password'
+                    keyboardType="visible-password"
+                    mode="outlined"
+                    selectionColor="#9c27b0"
+                    underlineColor="transparent"
+                />
+                  <Button style={{width:200}} mode="contained" onPress={() => console.log('Pressed')}>
+                    Sign in
+                  </Button>
+                  <Button  mode="text" onPress={() => navigation.navigate("Signup") }>
+                    ... or Sign up
+                  </Button>
+
             </View>
-            <View>
-                <TextInput
-                 placeholder={"Password"}
-            />
-            </View>
-        </View>
-      </>
-    )
+        </ImageBackground>
+    );
 }
 
 export default SigninScreen;

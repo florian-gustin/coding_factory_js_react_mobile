@@ -14,9 +14,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 
 const App: () => React$Node = () => {
   return (
-    <SafeAreaView style={{alignItems: "center", justifyContent: "center"}}>
-      <SigninScreen />
-    </SafeAreaView>
+      <DrawerNavigation />
   );
 };
 
