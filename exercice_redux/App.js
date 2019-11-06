@@ -31,7 +31,6 @@ import Navigation from "./src/navigations/Navigation";
 
 const store = createStore(allReducers)
 
-
 const App: () => React$Node = () => {
   return (
       <Provider store={store}>
