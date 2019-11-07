@@ -1,7 +1,7 @@
 // users
 export const addUser = (v) => {
     return {
-        type : "ADD",
+        type : "ADDUSER",
         payload : v
     }
 }
@@ -56,6 +56,46 @@ export const addFavorite = (v) => {
 export const removeFavorite = (v) => {
     return {
         type : "REMOVEFAV",
+        payload : v
+    }
+}
+
+export const toggleLock = () => {
+    return {
+        type: "TOGGLELOCK"
+    }
+}
+
+export const username = (v) => {
+    return {
+        type: "USERNAME",
+        payload: v
+    }
+}
+
+export const password = (v) => {
+    return {
+        type: "PASSWORD",
+        payload: v
+    }
+}
+
+export const clearSign = () => {
+    return {
+        type: "CLEAR"
+    }
+}
+
+export const setMessage = (v) => {
+    return {
+        type: "SETMESSAGE",
+        payload: v
+    }
+}
+
+export const setLogged = (v) => {
+    return {
+        type: "SETLOGGED",
         payload : v
     }
 }
