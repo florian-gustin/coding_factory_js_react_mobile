@@ -25,20 +25,8 @@ const HomeSearchScreen = ({navigation}) => {
        loadingData()
       }
     }, [searchedText])
-  
 
-  /*let { state, dispatch } = useContext(User);
 
-  const [data, setData] = useState(null);
-
-  const { navigate } = useNavigation();
-
-  useEffect(() => {
-    if(state.searchedText) {
-     loadingData()
-    }
-  }, [state.searchedText])
-*/
   function loadingData() {
     console.log("loading api");
       if(searchedText!="" && !lock) {
