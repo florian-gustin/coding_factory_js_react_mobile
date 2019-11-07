@@ -37,11 +37,6 @@ export const getData = (v) => {
         payload : v
     }
 }
-export const changeStatusApi = () => {
-    return {
-        type : "CHANGESTATUS",
-    }
-}
 
 // data selected
 export const addSelectedData = (v) => {
@@ -54,19 +49,13 @@ export const addSelectedData = (v) => {
 // favorites list
 export const addFavorite = (v) => {
     return {
-        type : "ADD",
+        type : "ADDFAV",
         payload : v
     }
 }
 export const removeFavorite = (v) => {
     return {
-        type : "REMOVE",
+        type : "REMOVEFAV",
         payload : v
-    }
-}
-
-export const toggleLock = () => {
-    return {
-        type: "TOGGLELOCK"
     }
 }
