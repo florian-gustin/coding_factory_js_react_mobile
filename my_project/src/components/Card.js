@@ -1,9 +1,26 @@
 import React, { } from 'react';
-import {Card} from 'react-native-paper';
+import {Avatar, Button, Card, Title, Paragraph, IconButton, Colors} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
 
-const MyComponent = (item) => {
+
+const MyComponent = ({item}) => {
   const data = item
+  const { navigate } = useNavigation();
+  console.log("les data dans CARD", data.poster)
+
+
+  function generateIconColor() {
+    if(data) {
+      return (
+          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'orange'}} />} />
+      )
+    }else {
+      return (
+          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'gray'}} />} />
+      )
+    }
+  }
   /* const { navigate } = useNavigation();
   let { state, dispatch } = useContext(User);
 
@@ -77,19 +94,19 @@ const MyComponent = (item) => {
   <Card style={{backgroundColor: 'white', marginBottom: 5, elevation: 5}}>
 
     <TouchableOpacity
-        onPress={() => {handleFavorite()}
+        onPress={() => {}
       }
     >
-      {/*{generateIconColor()}*/}
+      {generateIconColor()}
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() => {
-        // navigate('Details', {
-        //   data: data,
-        // });
+        navigate('Detail', {
+          data: data,
+        });
       }}
     >
-      {/* <Card.Cover source={{ uri: data.poster }} /> */}
+       <Card.Cover source={{ uri: data.poster }} />
     </TouchableOpacity>
   </Card>
 )};

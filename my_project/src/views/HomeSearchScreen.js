@@ -11,14 +11,9 @@ import {changeStatusApi, getData, removeText, toggleLock} from "../actions";
 
 const HomeSearchScreen = ({navigation}) => {
     const dispatch = useDispatch()
-
     const searchedText = useSelector(state => state.searchedTextReducer)
-    console.log("le text a chercher ", searchedText)
     const data = useSelector(state => state.dataFromApiReducer).data
-    const lock = useSelector(state => state.dataFromApiReducer).lock
-    console.log(data)
-    const statusLoading = useSelector(state => state.dataFromApiReducer).status
-    console.log(statusLoading)
+
 
     useEffect(() => {
       if(searchedText) {
@@ -28,10 +23,7 @@ const HomeSearchScreen = ({navigation}) => {
 
 
   function loadingData() {
-    console.log("loading api");
-      if(searchedText!="" && !lock) {
-          setTimeout(() => {
-            getFilmsFromSearchedText(searchedText).then(data => {
+          getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;
 
               let concatPosterPath = "http://image.tmdb.org/t/p/w1280/"
@@ -47,23 +39,18 @@ const HomeSearchScreen = ({navigation}) => {
                       date : dateFormat,
                       vote_average : resp[i].vote_average,
                       popularity: resp[i].popularity,
-                      content : resp[i].overwiew,
+                      content : resp[i].overview,
                       poster: concatPosterPath+""+resp[i].poster_path,
                   }
                   list.push(format);
               }
-              console.log(list)
               dispatch(getData(list))
               //dispatch(removeText())
           });
-          }, 200)
-      }
   }
 
   const cardGenerator = () => {
-    if(statusLoading==false) {
-        //dispatch(changeStatusApi())
-        //console.log("ya de la data", data)
+    if(data!="") {
       return (
         <FlatList
           data={data}
@@ -71,8 +58,6 @@ const HomeSearchScreen = ({navigation}) => {
           keyExtractor={item => item.id.toString()}
         />
       )
-    }else {
-        //loadingData()
     }
   }
 
@@ -85,6 +70,7 @@ const HomeSearchScreen = ({navigation}) => {
       </View>
       <View style={styles.box}>
          <Text>hello</Text>
+          {cardGenerator()}
       </View>
       {/*<Button onPress={() => {*/}
       {/*  navigation.toggleDrawer();*/}
