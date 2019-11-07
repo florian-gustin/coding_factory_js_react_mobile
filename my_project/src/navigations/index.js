@@ -27,6 +27,7 @@ const MyHamburger = ({navigation}) => (
 
 
 const DrawerNavigator = createDrawerNavigator({
+   
     Home: {
         screen: HomeSearchScreen,
     },
@@ -35,14 +36,17 @@ const DrawerNavigator = createDrawerNavigator({
     },
     About : {
         screen: AboutScreen
-    },
-    Signin: {
-        screen: SigninScreen,
-    },
+    }
 });
 
 
 const MainStack = createStackNavigator({
+     Signin: {
+        screen: SigninScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
     DrawerNavigator : {
         screen : DrawerNavigator,
         navigationOptions: ({ navigation }) => ({
@@ -56,7 +60,10 @@ const MainStack = createStackNavigator({
         screen: MovieDetailScreen
     },
     Signup : {
-        screen: SingnupScreen
+        screen: SingnupScreen,
+        navigationOptions: {
+            header: null
+        }
     }
 });
 

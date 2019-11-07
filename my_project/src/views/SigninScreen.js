@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
   });
 
 const SigninScreen = ({navigation}) => {
+
+navigation.navigationOptions = {
+  header: 'none',
+  };
   const state = useSelector(state => state.signReducer);
   const profile = useSelector(state => state.usersReducer);
 
@@ -45,7 +49,7 @@ const SigninScreen = ({navigation}) => {
     if(result.length > 0) {
       if(result[0].username == usernameField && result[0].password == password) {
         dispatch(setLogged(true));
-        navigation.navigate("Home")
+        navigation.navigate("DrawerNavigator")
       }else {
         dispatch(setMessage("Username not found or wrong password"))
       }
@@ -96,6 +100,9 @@ const SigninScreen = ({navigation}) => {
             </View>
         </ImageBackground>
     );
+    
 }
+
+
 
 export default SigninScreen;
