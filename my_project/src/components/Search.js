@@ -1,21 +1,21 @@
 import React, { } from 'react';
 import { Searchbar } from 'react-native-paper';
+import {useDispatch, useSelector} from "react-redux";
+import {addText} from "../actions";
 
 const Search = () => {
-  /*const [textIncoming, setTextIncoming] = useState(null)
-  let { state, dispatch } = useContext(User);
-
-  // let setText = text => () => dispatch({ type: 'updateSearchedText', payload: text })
+  const dispatch = useDispatch();
+  const textIncoming = useSelector(state => state.searchedTextReducer)
 
   function setText(text) {
-    dispatch({ type: 'updateSearchedText', payload: text })
+    console.log("l'entrée est : ", text)
+    dispatch(addText(text))
+    console.log(textIncoming)
   }
-
-  console.log(state) */
   return(
     <Searchbar
       placeholder="Search"
-      //onChangeText={query => setText(query)}
+      onChangeText={query => setText(query)}
     />
   )
 }

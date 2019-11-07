@@ -2,8 +2,8 @@ import React, { } from 'react';
 import {Card} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 
-const MyComponent = () => {
-
+const MyComponent = (item) => {
+  const data = item
   /* const { navigate } = useNavigation();
   let { state, dispatch } = useContext(User);
 
@@ -80,7 +80,7 @@ const MyComponent = () => {
         onPress={() => {handleFavorite()}
       }
     >
-      {generateIconColor()}
+      {/*{generateIconColor()}*/}
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() => {
