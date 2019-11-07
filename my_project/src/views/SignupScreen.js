@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, StyleSheet, Text } from 'react-native';
+import { View, ImageBackground, StyleSheet, Text, Image } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 const styles = StyleSheet.create({
     background: {
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
       padding: 20,
       width: "100%",
       maxWidth: 340,
-      alignSelf: "flex-end",
-      justifyContent: "flex-end"
+      alignSelf: "center",
+      alignItems: "center",
     },
     header : {
         fontSize: 24,
@@ -23,16 +23,22 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingBottom: 5
       },
+      image: {
+        flex: 1,
+        width: null,
+        height: null,
+    }
   });
 
-const SignunScreen = ({navigation}) => {
+const SignupScreen = ({navigation}) => {
     return(
         <ImageBackground
-        source={require("../assets/background.png")}
-        resizeMode="repeat"
+        source={require("../assets/register.jpg")}
+        resizeMode="cover"
         style={styles.background}>
+
             <View style={styles.container}> 
-                <Text style={styles.header}>Welcome back.</Text>
+                <Text style={styles.header}>Register</Text>
                 <TextInput
                     style={styles.text}
                     label='Email'
@@ -49,10 +55,10 @@ const SignunScreen = ({navigation}) => {
                     underlineColor="transparent"
                 />
                   <Button style={{width:200}} mode="contained" onPress={() => console.log('Pressed')}>
-                    Sign in
+                    Create my account
                   </Button>
-                  <Button  mode="text" onPress={() => navigation.navigate("Signup") }>
-                    ... or Sign up
+                  <Button  mode="text" onPress={() => navigation.navigate("Signin") }>
+                    You have already an account ?
                   </Button>
 
             </View>
@@ -60,4 +66,4 @@ const SignunScreen = ({navigation}) => {
     );
 }
 
-export default SignunScreen;
+export default SignupScreen;

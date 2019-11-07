@@ -1,12 +1,12 @@
 //This is an example code for Bottom Navigation//
-import React, { } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 //import react in our code.
-import { View, StyleSheet, SafeAreaView, Button, FlatList } from 'react-native';
+import { View, StyleSheet, SafeAreaView, Button, FlatList, Text } from 'react-native';
 import Card from '../components/Card'
 import Search from '../components/Search';
-//import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
-import {changeStatusApi, getData, removeText} from "../actions";
+import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
+import {changeStatusApi, getData, removeText, toggleLock} from "../actions";
 //import all the basic component we have used
 
 const HomeSearchScreen = ({navigation}) => {
@@ -20,6 +20,13 @@ const HomeSearchScreen = ({navigation}) => {
     const statusLoading = useSelector(state => state.dataFromApiReducer).status
     console.log(statusLoading)
 
+    useEffect(() => {
+      if(searchedText) {
+       loadingData()
+      }
+    }, [searchedText])
+  
+
   /*let { state, dispatch } = useContext(User);
 
   const [data, setData] = useState(null);
@@ -32,18 +39,16 @@ const HomeSearchScreen = ({navigation}) => {
     }
   }, [state.searchedText])
 */
-  const loadingData = () => {
+  function loadingData() {
+    console.log("loading api");
       if(searchedText!="" && !lock) {
-
           setTimeout(() => {
-              console.log("api");
-          }, 1000)
-
-          /*/!*getFilmsFromSearchedText(searchedText).then(data => {
+            getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;
 
               let concatPosterPath = "http://image.tmdb.org/t/p/w1280/"
-              let list = []
+              //list = resp
+              let list = [];
 
               for(let i = 0; i < resp.length ; i++) {
                   let dateTmp = resp[i].release_date
@@ -61,8 +66,9 @@ const HomeSearchScreen = ({navigation}) => {
               }
               console.log(list)
               dispatch(getData(list))
-              dispatch(removeText())*!/
-          });*/
+              //dispatch(removeText())
+          });
+          }, 200)
       }
   }
 
@@ -78,19 +84,19 @@ const HomeSearchScreen = ({navigation}) => {
         />
       )
     }else {
-        loadingData()
+        //loadingData()
     }
   }
 
   return (
     <SafeAreaView style={{flex: 1 }}>
       <View style={styles.box}>
-          <Search/>
+          <Search />
       </View>
       <View style={styles.box}>
       </View>
       <View style={styles.box}>
-         hello
+         <Text>hello</Text>
       </View>
       {/*<Button onPress={() => {*/}
       {/*  navigation.toggleDrawer();*/}

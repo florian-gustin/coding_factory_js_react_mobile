@@ -7,7 +7,7 @@ let initialState = {
 const dataFromApiReducer = (state = initialState, action) => {
     switch (action.type) {
         case "GET":
-            return {...state, data : action.payload, loaded : true} ;
+            return {data : action.payload, loaded : true} ;
         case "CHANGESTATUS":
             return {...state, loaded : false}
         case "TOGGLELOCK":

@@ -64,3 +64,9 @@ export const removeFavorite = (v) => {
         payload : v
     }
 }
+
+export const toggleLock = () => {
+    return {
+        type: "TOGGLELOCK"
+    }
+}
