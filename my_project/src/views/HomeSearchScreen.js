@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { View, StyleSheet, SafeAreaView, Button, FlatList } from 'react-native';
 import Card from '../components/Card'
 import Search from '../components/Search';
-import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
+//import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
 import {changeStatusApi, getData, removeText} from "../actions";
 //import all the basic component we have used
 
@@ -15,6 +15,7 @@ const HomeSearchScreen = ({navigation}) => {
     const searchedText = useSelector(state => state.searchedTextReducer)
     console.log("le text a chercher ", searchedText)
     const data = useSelector(state => state.dataFromApiReducer).data
+    const lock = useSelector(state => state.dataFromApiReducer).lock
     console.log(data)
     const statusLoading = useSelector(state => state.dataFromApiReducer).status
     console.log(statusLoading)
@@ -32,8 +33,13 @@ const HomeSearchScreen = ({navigation}) => {
   }, [state.searchedText])
 */
   const loadingData = () => {
-      if(searchedText!="") {
-          getFilmsFromSearchedText(searchedText).then(data => {
+      if(searchedText!="" && !lock) {
+
+          setTimeout(() => {
+              console.log("api");
+          }, 1000)
+
+          /*/!*getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;
 
               let concatPosterPath = "http://image.tmdb.org/t/p/w1280/"
@@ -55,15 +61,15 @@ const HomeSearchScreen = ({navigation}) => {
               }
               console.log(list)
               dispatch(getData(list))
-              dispatch(removeText())
-          });
+              dispatch(removeText())*!/
+          });*/
       }
   }
 
   const cardGenerator = () => {
     if(statusLoading==false) {
-        dispatch(changeStatusApi())
-        console.log("ya de la data", data)
+        //dispatch(changeStatusApi())
+        //console.log("ya de la data", data)
       return (
         <FlatList
           data={data}
@@ -84,7 +90,7 @@ const HomeSearchScreen = ({navigation}) => {
       <View style={styles.box}>
       </View>
       <View style={styles.box}>
-         {cardGenerator()}
+         hello
       </View>
       {/*<Button onPress={() => {*/}
       {/*  navigation.toggleDrawer();*/}
