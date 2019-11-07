@@ -4,13 +4,15 @@ import React, { } from 'react';
 import { Text, View, ImageBackground } from 'react-native';
 import { Paragraph, Divider, IconButton, Colors } from 'react-native-paper';
 import {ScrollView} from 'react-navigation';
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
+
 
 //import all the basic component we have used
 
-const DetailsScreen = () => {
+const DetailsScreen = (navigation) => {
   //const {navigate} = useNavigation();
 
-  //const data = useNavigationParam('data');
+  const data = useNavigationParam('data');
 
   console.log(data.poster_path);
 
@@ -39,7 +41,7 @@ const DetailsScreen = () => {
       <Divider></Divider>
       <View style={{padding: 10}}>
         <Paragraph style={{lineHeight: 22}}>
-          {/* {data.content} */}
+           {data.content} 
         </Paragraph>
       </View>
       {/*<Video source={{uri: "background"}}   // Can be a URL or a local file.*/}
