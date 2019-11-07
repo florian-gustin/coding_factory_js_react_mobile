@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { View, ImageBackground, StyleSheet, Text, Image } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import { clearSign, addUser } from "../actions";
+import { username, password } from '../actions';
+
+
 const styles = StyleSheet.create({
     background: {
       flex: 1,
@@ -31,6 +36,9 @@ const styles = StyleSheet.create({
   });
 
 const SignupScreen = ({navigation}) => {
+  const state = useSelector(state => state.signReducer);
+  const regList = useSelector(state => state.usersReducer);
+  const dispatch = useDispatch();
     return(
         <ImageBackground
         source={require("../assets/register.jpg")}
@@ -41,20 +49,33 @@ const SignupScreen = ({navigation}) => {
                 <Text style={styles.header}>Register</Text>
                 <TextInput
                     style={styles.text}
-                    label='Email'
+                    label='Username'
+                    value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
+                    onChange={(t) => dispatch(username(t.nativeEvent.text))}
                 />
                 <TextInput
                     style={styles.text}
                     label='Password'
+                    value={state.password}
+                    onChange={(t) => dispatch(password(t.nativeEvent.text))}
                     keyboardType="visible-password"
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
                 />
-                  <Button style={{width:200}} mode="contained" onPress={() => console.log('Pressed')}>
+                  <Button style={{width:200}} mode="contained" onPress={() => {
+                    if(state.username != "" && state.password) {
+                      dispatch(addUser({
+                        username: state.username,
+                        password: state.password
+                      }));
+                      console.log("new state", regList);
+                    }
+                    
+                  }} >
                     Create my account
                   </Button>
                   <Button  mode="text" onPress={() => navigation.navigate("Signin") }>

@@ -12,12 +12,12 @@ let initialState = [
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "ADD":
+        case "ADDUSER":
             let getNew = action.payload
             let addId = getRandomInt(1000000)
-            getNew["id"] = addId
-            state.push(getNew)
-            return state
+            getNew.id = addId
+            state.push(getNew);
+            return state;
         case "REMOVE":
             let getRemove = action.payload
             let tmpState = state
