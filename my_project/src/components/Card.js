@@ -2,99 +2,75 @@ import React, { } from 'react';
 import {Avatar, Button, Card, Title, Paragraph, IconButton, Colors} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation, useNavigationParam } from 'react-navigation-hooks'
+import {useDispatch, useSelector} from "react-redux";
+import {addFavorite, removeFavorite} from "../actions";
 
 
 const MyComponent = ({item}) => {
+  const dispatch = useDispatch()
   const data = item
   const { navigate } = useNavigation();
-  console.log("les data dans CARD", data.poster)
 
+  const myFavorites = useSelector(state => state.favoritesListReducer)
 
-  function generateIconColor() {
-    if(data) {
-      return (
-          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'orange'}} />} />
-      )
-    }else {
-      return (
-          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'gray'}} />} />
-      )
-    }
-  }
-  /* const { navigate } = useNavigation();
-  let { state, dispatch } = useContext(User);
-
-  const data = item
-
-  const [favoriteStatus, setFavoriteStatus] = useState(false);
-  const [myFavoritesList, setMyFavoritesList] = useState(state.myFavorites);
-
-  useEffect(() => {
-    findEquals()
-  }, [state.myFavorites])
-
-  function setFavorites(text) {
-    dispatch({ type: 'updateMyFavorites', payload: text })
-  }
-
-  function findEquals() {
-    let myBool;
-    if(!state.myFavorites) {
-      for(let i = 0; i < state.myFavorites.length; i++) {
-        console.log("mon store "+state.myFavorites[i].id)
-        console.log("mon current "+item.id)
-        if(state.myFavorites[i].id==item.id){
-          myBool = true;
-        } else {
-          myBool = false
-        }
-      }
-    }
-    return myBool
-  }
-
-
-  function generateIconColor() {
-    if(favoriteStatus==true) {
-      return (
-        <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'orange'}} />} />
-      )
-    }else {
-      return (
-        <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'gray'}} />} />
-      )
-    }
-  }
 
   function handleFavorite() {
-    setFavoriteStatus(!favoriteStatus);
-    let list = state.myFavorites;
-    switch (favoriteStatus) {
-      case false :
-        //add
-        console.log('add')
-        let column = {
-          id: data.id,
-          title: data.title,
-        };
-        list.push(column)
-        break;
-      case true :
-        //remove
-        console.log('delete')
-        let array = list.filter(function(item) { return item.id != data.id });
-        list = array;
-        break;
+
+    if(myFavorites.favorites.length == 0) {
+      dispatch(addFavorite(data))
+      console.log("ya rien du tout a la base", myFavorites.favorites)
+      return;
     }
-    setFavorites(list);
-    console.log(state.myFavorites)
-  } */
+    let result = myFavorites.favorites.filter((element) => {
+      return data.title.indexOf(element.title) !== -1
+    });
+
+    if(result.length > 0) {
+
+      dispatch(removeFavorite(data))
+
+      console.log("on supprime", myFavorites.favorites)
+
+    }else {
+      dispatch(addFavorite(data))
+      console.log("on rajoute", myFavorites.favorites)
+
+    }
+  }
+
+    function generateIconColor() {
+/*    if(myFavorites.favorites.length>0){
+      for(let i = 0; i < myFavorites.favorites.length ; i++){
+        if(myFavorites.favorites['title']==data.title){
+          return (
+              <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'orange'}} />} />
+          )
+        }
+        else if(myFavorites.favorites['title']!=data.title){
+          return (
+              <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: 'gray'}} />} />
+          )
+        }
+      }
+    } else {*/
+      let result = myFavorites.favorites.filter((element) => {
+        console.log("oh");
+        return data.title.indexOf(element.title) !== -1
+      });
+      return (
+          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: (result.length > 0) ? "orange": "gray"}} />} />
+      )
+    //}
+  }
+
 
   return(
   <Card style={{backgroundColor: 'white', marginBottom: 5, elevation: 5}}>
 
     <TouchableOpacity
-        onPress={() => {}
+        onPress={() => {
+          handleFavorite()
+        }
       }
     >
       {generateIconColor()}

@@ -1,13 +1,16 @@
-let initialState = []
+let initialState = {
+    favorites : [],
+    status : null
+}
 
 const favoritesListReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "ADD":
-            state = action.payload
-            return state;
-        case "REMOVE":
+        case "ADDFAV":
+            state.favorites.push(action.payload)
+            return state
+        case "REMOVEFAV":
             let getNameToDelete = action.payload
-            let tmpState = state
+            let tmpState = state.favorites
             let indexToRemove = ""
             tmpState.forEach((value, index) => {
                 if(value.title==getNameToDelete){
@@ -15,10 +18,9 @@ const favoritesListReducer = (state = initialState, action) => {
                 }
             })
             tmpState.splice(indexToRemove, 1)
-            return tmpState
+            return {...state, favorites: tmpState, status: 'removed'}
         default:
             return state
-
 
     }
 }

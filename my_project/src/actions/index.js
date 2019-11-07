@@ -49,13 +49,13 @@ export const addSelectedData = (v) => {
 // favorites list
 export const addFavorite = (v) => {
     return {
-        type : "ADD",
+        type : "ADDFAV",
         payload : v
     }
 }
 export const removeFavorite = (v) => {
     return {
-        type : "REMOVE",
+        type : "REMOVEFAV",
         payload : v
     }
 }
