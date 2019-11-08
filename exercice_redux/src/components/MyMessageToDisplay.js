@@ -49,8 +49,6 @@ const MyComponent = () => {
       '25%',
     );
   }
-  console.log(win)
-
   return (
     <View>
       <Text style={{textAlign: 'center'}}>{displayMessage}</Text>

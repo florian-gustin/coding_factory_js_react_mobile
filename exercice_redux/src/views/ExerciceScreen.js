@@ -16,9 +16,6 @@ const ExerciceScreen = () => {
 
     const dispatch = useDispatch();
 
-    console.log("Cédric se maturbe devant Doryan :", history)
-
-
     function restartWriteHistoryAndClearOthers() {
         if(win==true){
             dispatch(addHistory({numbertoFound : numberToFind, winTries: counter}))
