@@ -16,7 +16,7 @@ import SingnupScreen from '../views/SignupScreen';
 const MyHamburger = ({navigation}) => (
     <IconButton
         icon="menu"
-        color={Colors.red500}
+        color={"#9c27b0"}
         size={20}
         onPress={() => navigation.toggleDrawer()}
     />

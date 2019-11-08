@@ -72,7 +72,7 @@ const SignupScreen = ({navigation}) => {
                         username: state.username,
                         password: state.password
                       }));
-                      console.log("new state", regList);
+                      navigation.navigate("Signin")
                     }
                     
                   }} >
