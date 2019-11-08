@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React from 'react';
 import { View, TouchableOpacity } from 'react-native'
-import { Avatar, Button, Card, Title, Paragraph, IconButton, Colors } from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
-import {addFavorite, removeFavorite} from "../actions";
+import { Card, Title, IconButton, Colors } from 'react-native-paper';
+import {useDispatch} from 'react-redux';
+import {removeFavorite} from "../actions";
 
 const Favorite = ({item}) => {
-  // let { state, dispatch } = useContext(User);
 
   const data = item
   const dispatch = useDispatch();
@@ -14,16 +13,7 @@ const Favorite = ({item}) => {
   function deleteThisFavorite() {
     dispatch(removeFavorite(data))
 
-    // setSearchedText();
   }
-
-  // function setFavorites(text) {
-  //   dispatch({ type: 'updateMyFavorites', payload: text })
-  // }
-
-  // function setSearchedText() {
-  //   dispatch({ type: 'updateSearchedText', payload: "" })
-  // }
 
   return (
     <View style={{ width : 400, marginBottom: 5, marginTop: 5}}>

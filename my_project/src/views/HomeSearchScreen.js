@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 //import react in our code.
-import { View, StyleSheet, SafeAreaView, Button, FlatList, Text } from 'react-native';
+import { View, StyleSheet, SafeAreaView, FlatList, Text } from 'react-native';
 import Card from '../components/Card'
 import Search from '../components/Search';
 import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
-import {changeStatusApi, getData, removeText, toggleLock} from "../actions";
+import {getData} from "../actions";
 //import all the basic component we have used
 
-const HomeSearchScreen = ({navigation}) => {
+const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
@@ -45,7 +45,6 @@ const HomeSearchScreen = ({navigation}) => {
                   list.push(format);
               }
               dispatch(getData(list))
-              //dispatch(removeText())
           });
   }
 
@@ -69,20 +68,12 @@ const HomeSearchScreen = ({navigation}) => {
       <View style={styles.box}>
       </View>
       <View style={styles.box}>
-         <Text>hello</Text>
           {cardGenerator()}
       </View>
-      {/*<Button onPress={() => {*/}
-      {/*  navigation.toggleDrawer();*/}
-      {/*}} title="Hello" />*/}
     </SafeAreaView>
 
   )
 }
-
-HomeSearchScreen.navigationOptions = ({navigation}) => {
-   drawerLabel : "Home"
- }
 
 const styles = StyleSheet.create({
   button: {

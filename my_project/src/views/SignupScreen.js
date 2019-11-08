@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View, ImageBackground, StyleSheet, Text, Image } from 'react-native';
+import React from 'react';
+import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
-import { clearSign, addUser } from "../actions";
+import { addUser } from "../actions";
 import { username, password } from '../actions';
 
 
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 
 const SignupScreen = ({navigation}) => {
   const state = useSelector(state => state.signReducer);
-  const regList = useSelector(state => state.usersReducer);
   const dispatch = useDispatch();
     return(
         <ImageBackground

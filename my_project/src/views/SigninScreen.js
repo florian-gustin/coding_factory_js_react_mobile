@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { username, password, clearSign, setMessage, setLogged } from '../actions';
@@ -43,8 +43,6 @@ navigation.navigationOptions = {
     let result = profile.filter(element => {
       return usernameField.indexOf(element.username) !== -1;
     });    
-
-    console.log(result);
     
     if(result.length > 0) {
       if(result[0].username == usernameField && result[0].password == password) {

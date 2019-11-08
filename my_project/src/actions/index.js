@@ -1,22 +1,3 @@
-// users
-export const addUser = (v) => {
-    return {
-        type : "ADDUSER",
-        payload : v
-    }
-}
-export const removeUser = (v) => {
-    return {
-        type : "REMOVE",
-        payload : v
-    }
-}
-export const updateUser = () => {
-    return {
-        type : "UPDATE",
-        payload : v
-    }
-}
 // searched text
 export const addText = (v) => {
     return {
@@ -38,14 +19,6 @@ export const getData = (v) => {
     }
 }
 
-// data selected
-export const addSelectedData = (v) => {
-    return {
-        type : "ADD",
-        payload : v
-    }
-}
-
 // favorites list
 export const addFavorite = (v) => {
     return {
@@ -60,11 +33,7 @@ export const removeFavorite = (v) => {
     }
 }
 
-export const toggleLock = () => {
-    return {
-        type: "TOGGLELOCK"
-    }
-}
+// signin action
 
 export const username = (v) => {
     return {
@@ -96,6 +65,26 @@ export const setMessage = (v) => {
 export const setLogged = (v) => {
     return {
         type: "SETLOGGED",
+        payload : v
+    }
+}
+
+// users list
+export const addUser = (v) => {
+    return {
+        type : "ADDUSER",
+        payload : v
+    }
+}
+export const removeUser = (v) => {
+    return {
+        type : "REMOVE",
+        payload : v
+    }
+}
+export const updateUser = () => {
+    return {
+        type : "UPDATE",
         payload : v
     }
 }

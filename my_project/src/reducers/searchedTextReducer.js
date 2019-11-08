@@ -1,4 +1,4 @@
-let initialState = ""
+let initialState = "Interstellar"
 
 const searchedTextReducer = (state = initialState, action) => {
     switch (action.type) {

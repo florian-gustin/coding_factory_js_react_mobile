@@ -1,27 +1,16 @@
 import React, { } from 'react';
 import { Text, View, ImageBackground } from 'react-native';
-import { Paragraph, Divider, IconButton, Colors } from 'react-native-paper';
+import { Paragraph, Divider } from 'react-native-paper';
 import {ScrollView} from 'react-navigation';
 import { useNavigationParam } from 'react-navigation-hooks'
 
 
-const DetailsScreen = (navigation) => {
-
+const DetailsScreen = () => {
   const data = useNavigationParam('data');
-
-  console.log(data.poster_path);
 
   return (
     <ScrollView style={{ flex: 1, width: '100%', padding: 5 }}>
       <ImageBackground source={{ uri: data.poster }} style={{width: '100%', height: 400}}>
-      <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-        <IconButton
-          icon="star-outline"
-          color={Colors.orange500}
-          size={40}
-          onPress={() => console.log('Pressed')}
-        />
-      </View>
       </ImageBackground>
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
         <Text style={{fontSize: 20}}>{data.title}</Text>
@@ -39,14 +28,6 @@ const DetailsScreen = (navigation) => {
            {data.content}
         </Paragraph>
       </View>
-      {/*<Video source={{uri: "background"}}   // Can be a URL or a local file.*/}
-      {/*       ref={(ref) => {*/}
-      {/*         this.player = ref*/}
-      {/*       }}                                      // Store reference*/}
-      {/*       onBuffer={this.onBuffer}                // Callback when remote video is buffering*/}
-      {/*       onError={this.videoError}               // Callback when video cannot be loaded*/}
-      {/*       style={styles.backgroundVideo} />*/}
-
     </ScrollView>
 
   )

@@ -1,4 +1,4 @@
-let initialState = [{}];
+let initialState = [];
 
 
 const historyReducer = (state = initialState, action) => {
