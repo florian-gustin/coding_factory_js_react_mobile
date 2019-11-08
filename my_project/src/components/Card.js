@@ -40,7 +40,6 @@ const MyComponent = ({item}) => {
       let result = myFavorites.favorites.filter((element) => {
         return data.id.toString().indexOf(element.id) !== -1
       });
-      console.log(data.id);
 
       return (
           <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: (result.length == 1) ? "orange": "gray"}} />} />

@@ -3,11 +3,14 @@ import { View, TouchableOpacity } from 'react-native'
 import { Card, Title, IconButton, Colors } from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {removeFavorite} from "../actions";
+import { useNavigation } from 'react-navigation-hooks'
 
 const Favorite = ({item}) => {
 
   const data = item
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
+
 
 
   function deleteThisFavorite() {
@@ -22,7 +25,11 @@ const Favorite = ({item}) => {
           <View style={{flexDirection: "row"}}>
             <View style={{width : '80%', justifySelf: 'center'}}>
               <TouchableOpacity
-
+              onPress={() => {
+                navigate('Detail', {
+                  data: data,
+                });
+              } }
               >
                 <Title style={{fontSize: 14, textTransform: 'uppercase'}}>{item.title}</Title>
               </TouchableOpacity>
