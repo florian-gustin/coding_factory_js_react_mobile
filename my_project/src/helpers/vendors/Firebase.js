@@ -50,9 +50,10 @@ export const signInUser = async (func1, func2, navigation, email, password) => {
         await auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 func1
+                func2
                 navigation.navigate("DrawerNavigator")
             })
     } catch (e) {
-        func2
+        return false;
     }
 }

@@ -74,7 +74,7 @@ const MyDrawer = ({navigation}) => {
                     color={Colors.purple900}
                     size={40}
                     onPress={async () => signOutUser(navigation)}
-                    //log out
+                    // call crud firebase auth (signOut)
                 />
             </View>
         </View>

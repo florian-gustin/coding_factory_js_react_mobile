@@ -56,9 +56,12 @@ navigation.navigationOptions = {
     }
   }
 
-  const mySignin = () => {
-      const tmp = signInUser(dispatch(setLogged(true)), dispatch(setMessage("Username not found or wrong password")), navigation, state.username, state.password);
-  }
+    // call crud firebase auth (signIn)
+    const mySignin = async () => {
+      const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
+      if(tmp==false)
+          dispatch(setMessage("Username not found or wrong password"))
+    }
 
 
 
