@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { IconButton, Colors } from 'react-native-paper';
+import React, {useState} from 'react';
+import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
+import {TouchableOpacity,View,StyleSheet} from "react-native";
 import {
     createDrawerNavigator
 } from 'react-navigation-drawer';
@@ -22,12 +23,69 @@ const MyHamburger = ({navigation}) => (
     />
 );
 
+const MyDrawer = ({navigation}) => {
+    const [active, setActive] = useState('Home')
+
+    function handleStateColor(screen, icon) {
+        return(
+            <TouchableOpacity
+                onPress={() => {
+                    setActive(screen)
+                    navigation.navigate(screen)
+                }}
+                style={{
+                    backgroundColor: (active == screen? 'indigo' : 'white')
+                }}
+            >
+                <List.Item
+                    titleStyle={{
+                        fontWeight: 'bold', textAlign: 'center',marginLeft: -45, letterSpacing: 2, textTransform: 'uppercase', color: (active == screen? 'white' : 'black')
+                    }}
+                    title={screen}
+                    left={props => <List.Icon {...props} icon={icon} color={active == screen? Colors.white : Colors.grey} />}
+                />
+            </TouchableOpacity>
+        )
+    }
+
+    const signOutUser = async () => {
+        try {
+            await firebase.auth().signOut();
+            navigation.navigate('Signin');
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    return (
+        <View>
+            {handleStateColor("Home", "magnify")}
+            <Divider />
+            {handleStateColor("Profile", "account")}
+            <Divider />
+            {handleStateColor("About", "information")}
+            <Divider />
+            {handleStateColor("Settings", "settings-outline")}
+            <Divider />
+
+        </View>
+
+    )
+
+}
+
+const styles = StyleSheet.create({
+    listItem : {
+        fontWeight: 'bold', textAlign: 'center',marginLeft: -45, letterSpacing: 2, textTransform: 'uppercase', color: 'white'
+    }
+})
+
 
 
 
 
 const DrawerNavigator = createDrawerNavigator({
-   
+
     Home: {
         screen: HomeSearchScreen,
     },
@@ -36,7 +94,10 @@ const DrawerNavigator = createDrawerNavigator({
     },
     About : {
         screen: AboutScreen
-    }
+    },
+},{
+    contentComponent: MyDrawer,
+    drawerWidth: 300
 });
 
 

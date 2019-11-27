@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import { addUser } from "../actions";
 import { username, password } from '../actions';
+import auth from '@react-native-firebase/auth';
 
 
 const styles = StyleSheet.create({
@@ -32,19 +33,53 @@ const styles = StyleSheet.create({
         flex: 1,
         width: null,
         height: null,
+    },
+    error: {
+        textAlign: 'center',
+        fontSize: 14,
+        color: "red",
+        marginTop: 10,
     }
   });
 
 const SignupScreen = ({navigation}) => {
   const state = useSelector(state => state.signReducer);
   const dispatch = useDispatch();
+  const [msgError, setMsgError] = useState('');
+
+  let error = false
+
+    async function register() {
+        try {
+            await auth().createUserWithEmailAndPassword(state.username, state.password)
+                .then(() => navigation.navigate("Signin"))
+        } catch (e) {
+            handleErrorMsg(e.message)
+        }
+    }
+
+    const handleErrorMsg = (msg) => {
+        let str = msg
+        let res = ""
+
+        if(str.search("[auth/invalid-email]")){
+            res = str.replace("[auth/invalid-email]", "")
+        }else if(str.search("[auth/weak-password]")){
+            res = str.replace("[auth/weak-password]", "")
+        }else if(str.search("[auth/email-already-in-use]")){
+            res = str.replace("[auth/email-already-in-use]", "")
+        }
+        // let res = str.split("]")
+        setMsgError(res)
+    }
+
     return(
         <ImageBackground
         source={require("../assets/register.jpg")}
         resizeMode="cover"
         style={styles.background}>
 
-            <View style={styles.container}> 
+            <View style={styles.container}>
                 <Text style={styles.header}>Register</Text>
                 <TextInput
                     style={styles.text}
@@ -71,16 +106,18 @@ const SignupScreen = ({navigation}) => {
                         username: state.username,
                         password: state.password
                       }));
-                      navigation.navigate("Signin")
+
+                        register()
+
                     }
-                    
+
                   }} >
                     Create my account
                   </Button>
                   <Button  mode="text" onPress={() => navigation.navigate("Signin") }>
                     You have already an account ?
                   </Button>
-
+                <Text style={styles.error}>Erreur : {msgError}</Text>
             </View>
         </ImageBackground>
     );

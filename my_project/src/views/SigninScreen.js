@@ -3,6 +3,7 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { username, password, clearSign, setMessage, setLogged } from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
+import auth from '@react-native-firebase/auth';
 
 
 const styles = StyleSheet.create({
@@ -42,8 +43,8 @@ navigation.navigationOptions = {
   const signinProcess = (usernameField, password) => {
     let result = profile.filter(element => {
       return usernameField.indexOf(element.username) !== -1;
-    });    
-    
+    });
+
     if(result.length > 0) {
       if(result[0].username == usernameField && result[0].password == password) {
         dispatch(setLogged(true));
@@ -56,12 +57,24 @@ navigation.navigationOptions = {
     }
   }
 
+    async function mySignIn(email, password) {
+        try {
+            await auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    dispatch(setLogged(true));
+                    navigation.navigate("DrawerNavigator")
+                })
+        } catch (e) {
+            dispatch(setMessage("Username not found or wrong password"))
+        }
+    }
+
     return(
         <ImageBackground
         source={require("../assets/background.png")}
         resizeMode="repeat"
         style={styles.background}>
-            <View style={styles.container}> 
+            <View style={styles.container}>
             <Text>{state.message}</Text>
                 <Text style={styles.header}>Welcome back.</Text>
                 <TextInput
@@ -84,7 +97,7 @@ navigation.navigationOptions = {
                     underlineColor="transparent"
                 />
                   <Button style={{width:200}} mode="contained" onPress={() => {
-                    signinProcess(state.username, state.password);
+                    mySignIn(state.username, state.password);
                   }}>
                     Sign in
                   </Button>
@@ -98,7 +111,7 @@ navigation.navigationOptions = {
             </View>
         </ImageBackground>
     );
-    
+
 }
 
 

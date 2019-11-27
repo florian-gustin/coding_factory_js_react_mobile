@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/src/navigations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/navigations/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/src/views/SignupScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/views/SignupScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +63,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my_project/android/app" />
       <recent name="$PROJECT_DIR$/exercice_redux/src/navigations" />
       <recent name="$PROJECT_DIR$/exercices/assets/img" />
       <recent name="$PROJECT_DIR$/exercices/src/views" />
@@ -97,6 +105,7 @@
       <workItem from="1573130296097" duration="10315000" />
       <workItem from="1574679848097" duration="43000" />
       <workItem from="1574679903878" duration="857000" />
+      <workItem from="1574807958518" duration="12329000" />
     </task>
     <servers />
   </component>
