@@ -8,6 +8,7 @@ import Search from '../components/Search';
 import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
 import {getData} from "../actions";
 //import all the basic component we have used
+import firestore from '@react-native-firebase/firestore';
 
 const HomeSearchScreen = () => {
     const dispatch = useDispatch()
@@ -20,6 +21,14 @@ const HomeSearchScreen = () => {
        loadingData()
       }
     }, [searchedText])
+
+    // const getAllData = async() => {
+    //     const documentSnapshot = await firestore()
+    //         .collection('tmdb')
+    //         .get();
+    //
+    //     console.log('favorites', documentSnapshot.docs.map(doc => doc.data()))
+    // }
 
 
   function loadingData() {
