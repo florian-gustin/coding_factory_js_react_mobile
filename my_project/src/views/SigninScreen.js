@@ -56,7 +56,7 @@ navigation.navigationOptions = {
                 <Text style={styles.header}>Welcome back.</Text>
                 <TextInput
                     style={styles.text}
-                    label='Username'
+                    label='Email'
                     value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"

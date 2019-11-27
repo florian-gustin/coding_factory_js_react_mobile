@@ -63,15 +63,16 @@ const SignupScreen = ({navigation}) => {
     const handleErrorMsg = (msg) => {
         let str = msg
         let res = ""
+        console.log(str)
+        if(str=="[auth/weak-password] The given password is invalid. [Password should be at least 6 characters]")
+            res = "Password is invalid, at least 6 characters."
 
-        if(str.search("[auth/invalid-email]")){
-            res = str.replace("[auth/invalid-email]", "")
-        }else if(str.search("[auth/weak-password]")){
-            res = str.replace("[auth/weak-password]", "")
-        }else if(str.search("[auth/email-already-in-use]")){
-            res = str.replace("[auth/email-already-in-use]", "")
-        }
-        // let res = str.split("]")
+        if(str=="[auth/invalid-email] The email address is badly formatted.")
+            res = "Email address is badly formatted."
+
+        if(str=="[auth/email-already-in-use] The email address is already in use by another account.")
+            res = "Email address is already used."
+
         setMsgError(res)
     }
 
@@ -85,7 +86,7 @@ const SignupScreen = ({navigation}) => {
                 <Text style={styles.header}>Register</Text>
                 <TextInput
                     style={styles.text}
-                    label='Username'
+                    label='Email'
                     value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"
@@ -120,7 +121,7 @@ const SignupScreen = ({navigation}) => {
                   <Button  mode="text" onPress={() => navigation.navigate("Signin") }>
                     You have already an account ?
                   </Button>
-                <Text style={styles.error}>Erreur : {msgError}</Text>
+                <Text style={styles.error}>{msgError}</Text>
             </View>
         </ImageBackground>
     );
