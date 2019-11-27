@@ -49,6 +49,7 @@ const SignupScreen = ({navigation}) => {
 
   let error = false
 
+    // subscribe an account email & password
     async function register() {
         try {
             await auth().createUserWithEmailAndPassword(state.username, state.password)
@@ -58,6 +59,7 @@ const SignupScreen = ({navigation}) => {
         }
     }
 
+    // displaying errors messages
     const handleErrorMsg = (msg) => {
         let str = msg
         let res = ""
@@ -106,6 +108,7 @@ const SignupScreen = ({navigation}) => {
                         username: state.username,
                         password: state.password
                       }));
+                      // add logs to store then go to SignIn
 
                         register()
 
