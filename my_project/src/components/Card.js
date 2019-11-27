@@ -4,8 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import {useDispatch, useSelector} from "react-redux";
 import {addFavorite, removeFavorite} from "../actions";
-import firestore from '@react-native-firebase/firestore';
-import firebase from '@react-native-firebase/app';
+import {getRowFromFirestore,addtoFirestore,deleteFromFirestore} from '../helpers/vendors/Firebase'
 
 
 const MyComponent = ({item}) => {
@@ -13,80 +12,39 @@ const MyComponent = ({item}) => {
   const data = item
   const { navigate } = useNavigation();
 
+  // quick color state hooks at grey by default
   const [iconCol, setIconCol] = useState("grey")
-  const myFavorites = useSelector(state => state.favoritesListReducer)
 
   useEffect(() => {
     checkStatusFavorite()
   })
 
+  // call crud firebase (r)
+  // check if exist
+  // set icon color for displaying
   const checkStatusFavorite = async() => {
-    const documentSnapshot = await firestore()
-        .collection('tmdb')
-        .doc(data.id.toString())
-        .get()
+    const tmp = await getRowFromFirestore('tmdb', data.id.toString())
 
-    const tmp = documentSnapshot.data()
-
-    console.log("tmp", tmp)
     if(tmp!=undefined) {
       setIconCol("orange")
     }
   }
 
-
+  // call crud firebase (c)
+  // set icon color for displaying
   const addFavoriteToFirestore = async() => {
-    const documentRef = await firebase.firestore().collection('tmdb').doc(data.id.toString()).set({
-      idFromApi: data.id,
-      title: data.title,
-      posterPath: data.poster,
-    });
+    const tmp = await addtoFirestore('tmdb', data.id.toString(), data.id.toString(), data.title, data.poster)
+
     setIconCol("orange")
   }
 
+  // call crud firebase (d)
+  // set icon color for displaying
   const removeFavoriteFromFirestore = async() => {
-    const deletion = await firebase.firestore().collection('tmdb').doc(data.id.toString()).delete();
+    const tmp = await deleteFromFirestore('tmdb', data.id.toString())
+
     setIconCol("grey")
   }
-
-
-
-
-
-  // function handleFavorite() {
-  //
-  //   if(myFavorites.favorites.length == 0) {
-  //     dispatch(addFavorite(data))
-  //     return;
-  //   }
-  //   let result = myFavorites.favorites.filter((element) => {
-  //     return data.title.indexOf(element.title) !== -1
-  //   });
-  //
-  //   if(result.length > 0) {
-  //
-  //     dispatch(removeFavorite(data))
-  //
-  //
-  //   }else {
-  //     dispatch(addFavorite(data))
-  //
-  //   }
-  // }
-
-
-
-  //   function generateIconColor() {
-  //
-  //
-  //     let result = myFavorites.favorites.filter((element) => {
-  //       return data.id.toString().indexOf(element.id) !== -1
-  //     });
-  //
-  //     return (
-  //         <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: (result.length == 1) ? "orange": "gray"}} />} />
-  //     )
-  // }
 
 
   return(
@@ -95,6 +53,7 @@ const MyComponent = ({item}) => {
     <TouchableOpacity
         onPress={async () => {
           (iconCol=="grey"? addFavoriteToFirestore() : removeFavoriteFromFirestore())
+          // checking icon color state for setting the right func
         }
       }
     >

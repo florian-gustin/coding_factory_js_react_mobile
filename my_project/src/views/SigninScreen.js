@@ -3,8 +3,7 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { username, password, clearSign, setMessage, setLogged } from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
-import auth from '@react-native-firebase/auth';
-
+import {signInUser} from '../helpers/vendors/Firebase'
 
 const styles = StyleSheet.create({
     background: {
@@ -57,17 +56,11 @@ navigation.navigationOptions = {
     }
   }
 
-    async function mySignIn(email, password) {
-        try {
-            await auth().signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    dispatch(setLogged(true));
-                    navigation.navigate("DrawerNavigator")
-                })
-        } catch (e) {
-            dispatch(setMessage("Username not found or wrong password"))
-        }
-    }
+  const mySignin = () => {
+      const tmp = signInUser(dispatch(setLogged(true)), dispatch(setMessage("Username not found or wrong password")), navigation, state.username, state.password);
+  }
+
+
 
     return(
         <ImageBackground
@@ -96,8 +89,8 @@ navigation.navigationOptions = {
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
                 />
-                  <Button style={{width:200}} mode="contained" onPress={() => {
-                    mySignIn(state.username, state.password);
+                  <Button style={{width:200}} mode="contained" onPress={async () => {
+                    mySignin()
                   }}>
                     Sign in
                   </Button>

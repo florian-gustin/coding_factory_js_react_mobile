@@ -1,19 +1,37 @@
-import React, { } from 'react';
+import React, { useState, useEffect} from 'react';
 import { SafeAreaView, FlatList } from 'react-native';
 import {useSelector} from 'react-redux';
 import Favorite from '../components/Favorite';
+import {
+  getRowFromFirestore,
+  addtoFirestore,
+  deleteFromFirestore,
+  getDataFromFirestore
+} from '../helpers/vendors/Firebase'
 
 
 const ProfileScreen = () => {
 
   const state = useSelector(state => state.favoritesListReducer)
 
+  const [favList, setFavList] = useState("")
+
+  useEffect(() => {
+    getAllFavorites()
+  })
+
+  const getAllFavorites = async() => {
+    const tmp = await getDataFromFirestore('tmdb')
+    setFavList(tmp)
+  }
+
+
   function listOfFavorites() {
     return (
       <FlatList
-        data={state.favorites}
+        data={favList}
         renderItem={({item}) => <Favorite item={item}/> }
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.idFromApi.toString()}
       />
     )
   }

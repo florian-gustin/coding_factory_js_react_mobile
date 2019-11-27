@@ -22,15 +22,6 @@ const HomeSearchScreen = () => {
       }
     }, [searchedText])
 
-    // const getAllData = async() => {
-    //     const documentSnapshot = await firestore()
-    //         .collection('tmdb')
-    //         .get();
-    //
-    //     console.log('favorites', documentSnapshot.docs.map(doc => doc.data()))
-    // }
-
-
   function loadingData() {
           getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;

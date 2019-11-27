@@ -13,6 +13,9 @@ import AboutScreen from "../views/AboutScreen"
 import ProfileScreen from "../views/ProfileScreen"
 import SigninScreen from '../views/SigninScreen';
 import SingnupScreen from '../views/SignupScreen';
+import {
+    signOutUser
+} from '../helpers/vendors/Firebase'
 
 const MyHamburger = ({navigation}) => (
     <IconButton
@@ -48,15 +51,6 @@ const MyDrawer = ({navigation}) => {
         )
     }
 
-    const signOutUser = async () => {
-        try {
-            await firebase.auth().signOut();
-            navigation.navigate('Signin');
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     return (
         <View>
             {handleStateColor("Home", "magnify")}
@@ -67,7 +61,22 @@ const MyDrawer = ({navigation}) => {
             <Divider />
             {handleStateColor("Settings", "settings-outline")}
             <Divider />
-
+            <View
+                style={{
+                    marginTop: 350,
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                <IconButton
+                    icon="logout-variant"
+                    color={Colors.purple900}
+                    size={40}
+                    onPress={async () => signOutUser(navigation)}
+                    //log out
+                />
+            </View>
         </View>
 
     )
