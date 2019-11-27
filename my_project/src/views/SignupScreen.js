@@ -64,7 +64,7 @@ const SignupScreen = ({navigation}) => {
         let str = msg
         let res = ""
         console.log(str)
-        if(str=="[auth/weak-password] The given password is invalid. [Password should be at least 6 characters]")
+        if(str=="[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
             res = "Password is invalid, at least 6 characters."
 
         if(str=="[auth/invalid-email] The email address is badly formatted.")
