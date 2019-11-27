@@ -46,7 +46,17 @@ const TabNavigator = createBottomTabNavigator({
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
                 </View>),
           }  
-    },  
+    }, 
+    // Settings :{
+    //     screen : SettingsScreen,
+    //     navigationOptions:{
+    //         tabBarLabel:'Settings',
+    //         tabBarIcon: ({ tintColor }) => (  
+    //             <View>  
+    //                 <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
+    //             </View>),  
+    //     }
+    // }, 
     Info: { 
         screen: AboutScreen,
         navigationOptions:{  
