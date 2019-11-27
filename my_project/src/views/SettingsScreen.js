@@ -6,24 +6,48 @@ import ReactNativeSettingsPage, {
   SwitchRow,
   SliderRow
 } from 'react-native-settings-page';
+import { Button, Paragraph, Dialog, Portal, RadioButton } from 'react-native-paper';
 
-import {Text, View} from "react-native"
+import {Text, View, Alert, StyleSheet, } from "react-native"
+
+import i118n from '../components/i118n';
+
+const styles = StyleSheet.create({
+  container: {
+    height: 48,
+  },
+  row: {
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+  },
+  checkboxContainer: {
+    paddingRight: 8,
+  },
+  label: {
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+});
 
 const SettingsScreen = () => {
+
+
     return (
       <>
       <View>
-      <Text style={{padding: 10, fontSize: 30}} >Settings</Text>
+      <Text style={{padding: 10, fontSize: 30}} >{i118n.t('settings.name')}</Text>
       </View>
       <ReactNativeSettingsPage>
-      <SectionRow text='General'>
+      <SectionRow text={i118n.t('settings.sectionGeneral')}>
         <SwitchRow 
-          text='Dark Mode'   
+          text={i118n.t('settings.darkmode')}
         />
       </SectionRow>
-      <SectionRow text='Account'>
+      <SectionRow text={i118n.t('settings.sectionAccount')}>
         <NavigateRow
-          text='Logout'
+          text={i118n.t('settings.logout')}
           
            />
       </SectionRow>

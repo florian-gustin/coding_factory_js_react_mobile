@@ -43,7 +43,7 @@ const DrawerNavigator = createDrawerNavigator({
 
 const MainStack = createStackNavigator({
     Signin: {
-        screen: SettingsScreen,
+        screen: SigninScreen,
         navigationOptions: {
             header: null
         }

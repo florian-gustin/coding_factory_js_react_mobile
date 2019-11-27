@@ -3,6 +3,7 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { username, password, clearSign, setMessage, setLogged } from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
+import i118n from '../components/i118n';
 
 
 const styles = StyleSheet.create({
@@ -49,10 +50,10 @@ navigation.navigationOptions = {
         dispatch(setLogged(true));
         navigation.navigate("DrawerNavigator")
       }else {
-        dispatch(setMessage("Username not found or wrong password"))
+        dispatch(setMessage(i118n.t("signin.wrongUsernameOrPassword")))
       }
     }else {
-      dispatch(setMessage("Username not found"))
+      dispatch(setMessage(i118n.t("signin.wrongUsername")))
     }
   }
 
@@ -63,10 +64,10 @@ navigation.navigationOptions = {
         style={styles.background}>
             <View style={styles.container}> 
             <Text>{state.message}</Text>
-                <Text style={styles.header}>Welcome back.</Text>
+                <Text style={styles.header}>{i118n.t("signin.welcome")}</Text>
                 <TextInput
                     style={styles.text}
-                    label='Username'
+                    label={i118n.t("signin.labelUsername")}
                     value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"
@@ -75,7 +76,7 @@ navigation.navigationOptions = {
                 />
                 <TextInput
                     style={styles.text}
-                    label='Password'
+                    label={i118n.t("signin.labelPassword")}
                     value={state.password}
                     onChange={(t) => dispatch(password(t.nativeEvent.text))}
                     mode="outlined"
@@ -85,13 +86,13 @@ navigation.navigationOptions = {
                   <Button style={{width:200}} mode="contained" onPress={() => {
                     signinProcess(state.username, state.password);
                   }}>
-                    Sign in
+                    {i118n.t("signin.signinBtn")}
                   </Button>
                   <Button  mode="text" onPress={() => {
                     dispatch(clearSign())
                     navigation.navigate("Signup")
                    } }>
-                    ... or Sign up
+                    {i118n.t("signin.orSignup")}
                   </Button>
 
             </View>
