@@ -16,16 +16,18 @@ const ProfileScreen = () => {
 
   const [favList, setFavList] = useState("")
 
+  // loading
   useEffect(() => {
     getAllFavorites()
   })
 
+  // get the list of favorites from firestore
   const getAllFavorites = async() => {
     const tmp = await getDataFromFirestore('tmdb')
     setFavList(tmp)
   }
 
-
+  // generate the flatList of favorites
   function listOfFavorites() {
     return (
       <FlatList

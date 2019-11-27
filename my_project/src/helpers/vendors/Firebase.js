@@ -1,8 +1,8 @@
 import firebase from "@react-native-firebase/app";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
-import {setLogged, setMessage} from "../../actions";
 
+// get data from firestore
 export const getDataFromFirestore = async(collectionName) => {
     const documentSnapshot = await firestore()
         .collection(collectionName)
@@ -13,6 +13,7 @@ export const getDataFromFirestore = async(collectionName) => {
     return allData
 }
 
+// get doc from firestore
 export const getRowFromFirestore = async(collectionName, docId) => {
     const documentSnapshot = await firestore()
         .collection(collectionName)
@@ -22,6 +23,7 @@ export const getRowFromFirestore = async(collectionName, docId) => {
     return documentSnapshot.data()
 }
 
+// add doc to firestore
 export const addtoFirestore = async(collectionName, docId, idFromApi, title, posterPath) => {
     const documentRef = await firebase.firestore().collection(collectionName).doc(docId.toString()).set({
         idFromApi: idFromApi,
@@ -30,12 +32,12 @@ export const addtoFirestore = async(collectionName, docId, idFromApi, title, pos
     });
 }
 
+// delete doc from firestore
 export const deleteFromFirestore = async(collectionName, docId) => {
     const deletion = await firebase.firestore().collection(collectionName).doc(docId.toString()).delete();
 }
 
-
-
+// log out
 export const signOutUser = async (navigation) => {
     try {
         await firebase.auth().signOut();
@@ -45,6 +47,7 @@ export const signOutUser = async (navigation) => {
     }
 }
 
+// log in
 export const signInUser = async (func1, func2, navigation, email, password) => {
     try {
         await auth().signInWithEmailAndPassword(email, password)

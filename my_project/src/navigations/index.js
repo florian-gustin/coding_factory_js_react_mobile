@@ -17,6 +17,8 @@ import {
     signOutUser
 } from '../helpers/vendors/Firebase'
 
+
+// hambuger icon component
 const MyHamburger = ({navigation}) => (
     <IconButton
         icon="menu"
@@ -26,6 +28,7 @@ const MyHamburger = ({navigation}) => (
     />
 );
 
+// drawer navigation component
 const MyDrawer = ({navigation}) => {
     const [active, setActive] = useState('Home')
 
@@ -89,10 +92,7 @@ const styles = StyleSheet.create({
     }
 })
 
-
-
-
-
+// drawer navigator , screens, component
 const DrawerNavigator = createDrawerNavigator({
 
     Home: {
@@ -109,7 +109,7 @@ const DrawerNavigator = createDrawerNavigator({
     drawerWidth: 300
 });
 
-
+// stack navigator
 const MainStack = createStackNavigator({
      Signin: {
         screen: SigninScreen,
@@ -137,10 +137,9 @@ const MainStack = createStackNavigator({
     }
 });
 
-// const DrawerNavigation = createAppContainer(DrawerNavigator);
+// app container
 const DrawerNavigation = createAppContainer(MainStack);
-
-
+// export
 export default DrawerNavigation;
 
 

@@ -1,15 +1,12 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native'
 import { Card, Title, IconButton, Colors } from 'react-native-paper';
-import {useDispatch} from 'react-redux';
-import {removeFavorite} from "../actions";
 import { useNavigation } from 'react-navigation-hooks'
-import {getRowFromFirestore,addtoFirestore,deleteFromFirestore} from '../helpers/vendors/Firebase'
+import {deleteFromFirestore} from '../helpers/vendors/Firebase'
 
 const Favorite = ({item}) => {
 
   const data = item
-  const dispatch = useDispatch();
   const { navigate } = useNavigation();
 
   // call crud firebase (d)

@@ -34,27 +34,10 @@ const SigninScreen = ({navigation}) => {
 navigation.navigationOptions = {
   header: 'none',
   };
-  const state = useSelector(state => state.signReducer);
-  const profile = useSelector(state => state.usersReducer);
 
-  const dispatch = useDispatch();
-
-  const signinProcess = (usernameField, password) => {
-    let result = profile.filter(element => {
-      return usernameField.indexOf(element.username) !== -1;
-    });
-
-    if(result.length > 0) {
-      if(result[0].username == usernameField && result[0].password == password) {
-        dispatch(setLogged(true));
-        navigation.navigate("DrawerNavigator")
-      }else {
-        dispatch(setMessage("Username not found or wrong password"))
-      }
-    }else {
-      dispatch(setMessage("Username not found"))
-    }
-  }
+    // stored logins
+    const state = useSelector(state => state.signReducer);
+    const dispatch = useDispatch();
 
     // call crud firebase auth (signIn)
     const mySignin = async () => {
@@ -62,8 +45,6 @@ navigation.navigationOptions = {
       if(tmp==false)
           dispatch(setMessage("Username not found or wrong password"))
     }
-
-
 
     return(
         <ImageBackground
@@ -81,12 +62,14 @@ navigation.navigationOptions = {
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
                     onChange={(t) => dispatch(username(t.nativeEvent.text))}
+                    // add username to store
                 />
                 <TextInput
                     style={styles.text}
                     label='Password'
                     value={state.password}
                     onChange={(t) => dispatch(password(t.nativeEvent.text))}
+                    // add password to store
                     keyboardType="visible-password"
                     mode="outlined"
                     selectionColor="#9c27b0"

@@ -3,7 +3,6 @@ import {Avatar, Card} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import {useDispatch, useSelector} from "react-redux";
-import {addFavorite, removeFavorite} from "../actions";
 import {getRowFromFirestore,addtoFirestore,deleteFromFirestore} from '../helpers/vendors/Firebase'
 
 
