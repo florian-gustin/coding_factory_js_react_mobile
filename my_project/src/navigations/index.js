@@ -1,10 +1,15 @@
 import * as React from 'react';
+import { View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'; 
+
 import { IconButton, Colors } from 'react-native-paper';
 import {
     createDrawerNavigator
 } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator} from 'react-navigation-tabs';
+
 
 import HomeSearchScreen from "../views/HomeSearchScreen"
 import MovieDetailScreen from "../views/MovieDetailScreen"
@@ -22,17 +27,46 @@ const MyHamburger = ({navigation}) => (
     />
 );
 
-
+const TabNavigator = createBottomTabNavigator({
+    Search: { 
+        screen: HomeSearchScreen,
+        navigationOptions:{  
+            tabBarLabel:'Search',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
+                </View>),
+        } },
+    Favorites: { 
+        screen: ProfileScreen,
+        navigationOptions:{  
+            tabBarLabel:'Favorites',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
+                </View>),
+          }  
+    },  
+    Info: { 
+        screen: AboutScreen,
+        navigationOptions:{  
+            tabBarLabel:'About Us',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
+                </View>),  
+        }  
+    },  
+});
 
 
 
 const DrawerNavigator = createDrawerNavigator({
-   
     Home: {
-        screen: HomeSearchScreen,
+        screen: TabNavigator
     },
     Profile: {
-        screen: ProfileScreen,
+        screen: ProfileScreen
     },
     About : {
         screen: AboutScreen
@@ -53,9 +87,9 @@ const MainStack = createStackNavigator({
         header : MyHamburger({navigation})
         })
     },
-    Home: {
-        screen: HomeSearchScreen,
-    },
+    // Home: {
+    //     screen: HomeSearchScreen,
+    // },
     Detail : {
         screen: MovieDetailScreen
     },
