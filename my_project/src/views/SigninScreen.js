@@ -78,7 +78,6 @@ navigation.navigationOptions = {
                     label='Password'
                     value={state.password}
                     onChange={(t) => dispatch(password(t.nativeEvent.text))}
-                    keyboardType="visible-password"
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"

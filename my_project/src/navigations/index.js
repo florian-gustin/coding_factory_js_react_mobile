@@ -12,6 +12,7 @@ import AboutScreen from "../views/AboutScreen"
 import ProfileScreen from "../views/ProfileScreen"
 import SigninScreen from '../views/SigninScreen';
 import SingnupScreen from '../views/SignupScreen';
+import SettingsScreen from '../views/SettingsScreen';
 
 const MyHamburger = ({navigation}) => (
     <IconButton
@@ -41,8 +42,8 @@ const DrawerNavigator = createDrawerNavigator({
 
 
 const MainStack = createStackNavigator({
-     Signin: {
-        screen: SigninScreen,
+    Signin: {
+        screen: SettingsScreen,
         navigationOptions: {
             header: null
         }
