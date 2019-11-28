@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import { addUser } from "../actions";
 import { username, password } from '../actions';
+import auth from '@react-native-firebase/auth';
 import i118n from '../components/i118n';
 
 
@@ -33,12 +34,49 @@ const styles = StyleSheet.create({
         flex: 1,
         width: null,
         height: null,
+    },
+    error: {
+        textAlign: 'center',
+        fontSize: 14,
+        color: "red",
+        marginTop: 10,
     }
   });
 
 const SignupScreen = ({navigation}) => {
   const state = useSelector(state => state.signReducer);
   const dispatch = useDispatch();
+  const [msgError, setMsgError] = useState('');
+
+  let error = false
+
+    // subscribe an account email & password
+    async function register() {
+        try {
+            await auth().createUserWithEmailAndPassword(state.username, state.password)
+                .then(() => navigation.navigate("Signin"))
+        } catch (e) {
+            handleErrorMsg(e.message)
+        }
+    }
+
+    // displaying errors messages
+    const handleErrorMsg = (msg) => {
+        let str = msg
+        let res = ""
+        console.log(str)
+        if(str=="[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
+            res = "Password is invalid, at least 6 characters."
+
+        if(str=="[auth/invalid-email] The email address is badly formatted.")
+            res = "Email address is badly formatted."
+
+        if(str=="[auth/email-already-in-use] The email address is already in use by another account.")
+            res = "Email address is already used."
+
+        setMsgError(res)
+    }
+
     return(
         <ImageBackground
         source={require("../assets/register.jpg")}
@@ -71,16 +109,19 @@ const SignupScreen = ({navigation}) => {
                         username: state.username,
                         password: state.password
                       }));
-                      navigation.navigate("Signin")
+                      // add logs to store then go to SignIn
+
+                        register()
+
                     }
-                    
+
                   }} >
                     {i118n.t("signup.create")}
                   </Button>
                   <Button  mode="text" onPress={() => navigation.navigate("Signin") }>
                     {i118n.t("signup.alreadyAccount")}
                   </Button>
-
+                <Text style={styles.error}>{msgError}</Text>
             </View>
         </ImageBackground>
     );

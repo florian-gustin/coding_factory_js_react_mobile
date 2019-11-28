@@ -1,9 +1,9 @@
-import React, { } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Avatar, Card} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import {useDispatch, useSelector} from "react-redux";
-import {addFavorite, removeFavorite} from "../actions";
+import {getRowFromFirestore,addtoFirestore,deleteFromFirestore} from '../helpers/vendors/Firebase'
 
 
 const MyComponent = ({item}) => {
@@ -11,39 +11,38 @@ const MyComponent = ({item}) => {
   const data = item
   const { navigate } = useNavigation();
 
-  const myFavorites = useSelector(state => state.favoritesListReducer)
+  // quick color state hooks at grey by default
+  const [iconCol, setIconCol] = useState("grey")
 
+  useEffect(() => {
+    checkStatusFavorite()
+  })
 
-  function handleFavorite() {
+  // call crud firebase (r)
+  // check if exist
+  // set icon color for displaying
+  const checkStatusFavorite = async() => {
+    const tmp = await getRowFromFirestore('tmdb', data.id.toString())
 
-    if(myFavorites.favorites.length == 0) {
-      dispatch(addFavorite(data))
-      return;
-    }
-    let result = myFavorites.favorites.filter((element) => {
-      return data.title.indexOf(element.title) !== -1
-    });
-
-    if(result.length > 0) {
-
-      dispatch(removeFavorite(data))
-
-
-    }else {
-      dispatch(addFavorite(data))
-
+    if(tmp!=undefined) {
+      setIconCol("orange")
     }
   }
 
-    function generateIconColor() {
+  // call crud firebase (c)
+  // set icon color for displaying
+  const addFavoriteToFirestore = async() => {
+    const tmp = await addtoFirestore('tmdb', data.id.toString(), data.id.toString(), data.title, data.poster)
 
-      let result = myFavorites.favorites.filter((element) => {
-        return data.id.toString().indexOf(element.id) !== -1
-      });
+    setIconCol("orange")
+  }
 
-      return (
-          <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: (result.length == 1) ? "orange": "gray"}} />} />
-      )
+  // call crud firebase (d)
+  // set icon color for displaying
+  const removeFavoriteFromFirestore = async() => {
+    const tmp = await deleteFromFirestore('tmdb', data.id.toString())
+
+    setIconCol("grey")
   }
 
 
@@ -51,12 +50,13 @@ const MyComponent = ({item}) => {
   <Card style={{backgroundColor: 'white', marginBottom: 5, elevation: 5}}>
 
     <TouchableOpacity
-        onPress={() => {
-          handleFavorite()
+        onPress={async () => {
+          (iconCol=="grey"? addFavoriteToFirestore() : removeFavoriteFromFirestore())
+          // checking icon color state for setting the right func
         }
       }
     >
-      {generateIconColor()}
+      <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: iconCol }} />} />
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() => {

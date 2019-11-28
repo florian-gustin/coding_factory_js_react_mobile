@@ -11,7 +11,7 @@
       "wrongUsername": "Utilisateur introuvable",
       "welcome": "Hey !",
       "orSignup": "... ou s'inscrire",
-      "labelUsername": "Utilisateur",
+      "labelUsername": "Adresse Email",
       "labelPassword": "Mot de passe",
       "signinBtn": "Connexion"
     },
