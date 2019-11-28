@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
 import {TouchableOpacity,View,StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'; 
+import {useSelector} from 'react-redux';
+
 
 import {
     createDrawerNavigator
@@ -22,6 +24,8 @@ import {
     signOutUser
 } from '../helpers/vendors/Firebase'
 
+import { username,  setDarkMode } from '../actions';
+
 
 // hambuger icon component
 const MyHamburger = ({navigation}) => (
@@ -36,6 +40,7 @@ const MyHamburger = ({navigation}) => (
 // drawer navigation component
 const MyDrawer = ({navigation}) => {
     const [active, setActive] = useState('Home')
+    const darkMode = useSelector(state => state.darkModeReducer);
 
     function handleStateColor(screen, icon) {
         return(
@@ -45,7 +50,7 @@ const MyDrawer = ({navigation}) => {
                     navigation.navigate(screen)
                 }}
                 style={{
-                    backgroundColor: (active == screen? 'indigo' : 'white')
+                    backgroundColor: (active == screen? 'indigo' : 'white'),
                 }}
             >
                 <List.Item
@@ -65,9 +70,10 @@ const MyDrawer = ({navigation}) => {
             <Divider />
             {handleStateColor("Profile", "account")}
             <Divider />
-            {handleStateColor("About", "information")}
-            <Divider />
             {handleStateColor("Settings", "settings-outline")}
+            <Divider />
+            {handleStateColor("About", "information")}
+           
             <Divider />
             <View
                 style={{
@@ -121,39 +127,7 @@ const TabNavigator = createBottomTabNavigator({
                     activeBackgroundColor : 'indigo'
                   }, 
           }  
-    }, 
-    Settings :{
-        screen : SettingsScreen,
-        navigationOptions:{
-            tabBarLabel:'Settings',
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
-                </View>),
-                tabBarOptions: {
-                    activeTintColor: 'white',
-                    inactiveTintColor: 'indigo',
-                    inactiveBackgroundColor:'white',
-                    activeBackgroundColor : 'indigo'
-                  },  
-        }
-    }, 
-    About: { 
-        screen: AboutScreen,
-        navigationOptions:{  
-            tabBarLabel:'About',  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
-                </View>), 
-                tabBarOptions: {
-                    activeTintColor: 'white',
-                    inactiveTintColor: 'indigo',
-                    inactiveBackgroundColor:'white',
-                    activeBackgroundColor : 'indigo'
-                  }, 
-        }  
-    },  
+    },   
 });
 
 const styles = StyleSheet.create({
@@ -170,6 +144,9 @@ const DrawerNavigator = createDrawerNavigator({
     },
     Profile: {
         screen: ProfileScreen
+    },
+    Settings : {
+        screen: SettingsScreen
     },
     About : {
         screen: AboutScreen

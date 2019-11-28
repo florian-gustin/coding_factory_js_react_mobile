@@ -45,9 +45,10 @@ const MyComponent = ({item}) => {
     setIconCol("grey")
   }
 
+  const darkMode = useSelector(state => state.darkModeReducer);
 
   return(
-  <Card style={{backgroundColor: 'white', marginBottom: 5, elevation: 5}}>
+  <Card style={{backgroundColor: (darkMode) ? "black": "white", marginBottom: 5, elevation: 5}}>
 
     <TouchableOpacity
         onPress={async () => {
@@ -56,7 +57,7 @@ const MyComponent = ({item}) => {
         }
       }
     >
-      <Card.Title title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: iconCol }} />} />
+      <Card.Title titleStyle={{color:"grey"}} title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: iconCol }} />} />
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() => {

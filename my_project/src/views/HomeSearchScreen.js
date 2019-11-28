@@ -7,6 +7,7 @@ import Card from '../components/Card'
 import Search from '../components/Search';
 import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
 import {getData} from "../actions";
+
 //import all the basic component we have used
 
 
@@ -58,6 +59,8 @@ const HomeSearchScreen = () => {
     if(data!="") {
       return (
         <FlatList
+          style = {{backgroundColor: (darkMode) ? "black": "white"}}
+          
           data={data}
           renderItem={({item}) => <Card item={item}/> }
           keyExtractor={item => item.id.toString()}

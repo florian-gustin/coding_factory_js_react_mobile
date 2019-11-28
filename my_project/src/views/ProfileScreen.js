@@ -11,8 +11,11 @@ import {
 
 
 const ProfileScreen = () => {
+  const darkMode = useSelector(state => state.darkModeReducer);
+
 
   const state = useSelector(state => state.favoritesListReducer)
+  
 
   const [favList, setFavList] = useState("")
 
@@ -39,7 +42,8 @@ const ProfileScreen = () => {
   }
 
   return(
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center',
+                          backgroundColor: (darkMode) ? "black": "white"}}>
       {listOfFavorites()}
     </SafeAreaView>
   )
