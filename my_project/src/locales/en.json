@@ -11,7 +11,7 @@
       "wrongUsername": "Username not found",
       "welcome": "Welcome back.",
       "orSignup": "... or Sign up",
-      "labelUsername": "Username",
+      "labelUsername": "Email",
       "labelPassword": "Password",
       "signinBtn": "Sign in"
     },
