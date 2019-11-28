@@ -1,8 +1,8 @@
 //This is an example code for Bottom Navigation//
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 //import react in our code.
-import { View, StyleSheet, SafeAreaView, FlatList, Text } from 'react-native';
+import {View, StyleSheet, SafeAreaView, FlatList, Text, ActivityIndicator} from 'react-native';
 import Card from '../components/Card'
 import Search from '../components/Search';
 import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
@@ -15,6 +15,10 @@ const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
+    const user = useSelector(state => state.usersReducer).username
+
+    // loading screen
+    const [loading, setLoading] = useState(true)
 
 
     const darkMode = useSelector(state => state.darkModeReducer);
@@ -28,8 +32,10 @@ const HomeSearchScreen = () => {
 
     // call API
     // add data to store
-    function loadingData() {
-          getFilmsFromSearchedText(searchedText).then(data => {
+    async function loadingData() {
+        // lauching
+        setLoading(true)
+          await getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;
 
               let concatPosterPath = "http://image.tmdb.org/t/p/w1280/"
@@ -38,7 +44,7 @@ const HomeSearchScreen = () => {
 
               for(let i = 0; i < resp.length ; i++) {
                   let dateTmp = resp[i].release_date
-                  let dateFormat = dateTmp.substring(0, 4)
+                  let dateFormat = (dateTmp!=undefined? dateTmp.substring(0, 4) : '')
                   let format = {
                       id: resp[i].id,
                       title: resp[i].original_title,
@@ -52,6 +58,8 @@ const HomeSearchScreen = () => {
               }
               dispatch(getData(list))
           });
+        // stopping
+        setLoading(false)
     }
 
     // generate a flatList of Cards
@@ -77,7 +85,8 @@ const HomeSearchScreen = () => {
       <View style={styles.box}>
       </View>
       <View style={styles.box}>
-          {cardGenerator()}
+          {/* loading screen or cards */}
+          {loading==true? <ActivityIndicator size="large" color="indigo" /> : cardGenerator()}
       </View>
     </SafeAreaView>
 

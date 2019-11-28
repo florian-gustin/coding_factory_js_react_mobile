@@ -15,7 +15,7 @@ const ProfileScreen = () => {
 
 
   const state = useSelector(state => state.favoritesListReducer)
-  
+  const user = useSelector(state => state.usersReducer).username
 
   const [favList, setFavList] = useState("")
 
@@ -26,7 +26,7 @@ const ProfileScreen = () => {
 
   // get the list of favorites from firestore
   const getAllFavorites = async() => {
-    const tmp = await getDataFromFirestore('tmdb')
+    const tmp = await getDataFromFirestore(user)
     setFavList(tmp)
   }
 

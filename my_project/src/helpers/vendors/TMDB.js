@@ -9,3 +9,13 @@ export async function getFilmsFromSearchedText(text) {
     .then((response) => response.json())
     .catch((error) => console.error(error))
 }
+
+export async function getTrailersFromMovie(id) {
+  const url = "https://api.themoviedb.org/3/movie/"+id+"/videos?api_key=" + API_TOKEN + "&language="+i118n.locale;
+  console.log("url", url);
+
+  return fetch(url)
+  .then((response) => response.json())
+  .catch((error) => console.error(error) )
+}
+

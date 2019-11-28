@@ -1,8 +1,11 @@
-import React, { } from 'react';
+import React, { useState } from 'react';
 import { Text, View, ImageBackground } from 'react-native';
 import { Paragraph, Divider } from 'react-native-paper';
 import {ScrollView} from 'react-navigation';
-import { useNavigationParam } from 'react-navigation-hooks'
+import { useNavigationParam } from 'react-navigation-hooks';
+import { getTrailersFromMovie } from '../helpers/vendors/TMDB';
+import YouTube from 'react-native-youtube';
+import { YOUTUBE_API_KEY } from '../helpers/vendors/YoutubeApiKey';
 
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -10,11 +13,34 @@ const DetailsScreen = () => {
   const data = useNavigationParam('data');
   const darkMode = useSelector(state => state.darkModeReducer);
 
+  const [movie, setMovie] = useState(0);
+
+  getTrailersFromMovie(data.id).then((res) => {
+    if(res.results.length > 0) {
+      setMovie(res.results[0].key);
+      console.log("movie", movie);
+
+    }
+  });
+
 
   return (
     <ScrollView style={{ flex: 1, width: '100%', padding: 5, backgroundColor : (darkMode) ? "black": "white"}}>
       <ImageBackground source={{ uri: data.poster }} style={{width: '100%', height: 400}}>
+    <ScrollView style={{ flex: 1, width: '100%', padding: 5 }}>
+      {movie != 0 ? (
+              <YouTube
+              apiKey={YOUTUBE_API_KEY}
+              videoId={movie} // The YouTube video ID
+              play // control playback of video with true/false
+              // control whether the video should play in fullscreen or inline
+              loop // control whether the video should loop when ended
+              style={{ alignSelf: 'stretch', height: 300 }}
+              />
+      ) : (
+        <ImageBackground source={{ uri: data.poster }} style={{width: '100%', height: 400}}>
       </ImageBackground>
+      )}
       <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 10}}>
         <Text style={{fontSize: 20, color:  (darkMode) ? "white": "black"}}>{data.title}</Text>
         <Text style={{fontSize: 14, color:  (darkMode) ? "white": "black"}}>{data.date}</Text>

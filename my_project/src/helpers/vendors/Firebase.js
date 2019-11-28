@@ -2,6 +2,7 @@ import firebase from "@react-native-firebase/app";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 
+
 // get data from firestore
 export const getDataFromFirestore = async(collectionName) => {
     const documentSnapshot = await firestore()
@@ -17,7 +18,7 @@ export const getDataFromFirestore = async(collectionName) => {
 export const getRowFromFirestore = async(collectionName, docId) => {
     const documentSnapshot = await firestore()
         .collection(collectionName)
-        .doc(docId.toString())
+        .doc(docId)
         .get()
 
     return documentSnapshot.data()
