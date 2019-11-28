@@ -39,9 +39,9 @@
       "hooks": "Hooks",
       "ux": "UX Approach",
       "storerx": "store redux",
-      "video" : "video player for trailer",
-      "btmbar":  "bottom bar",
-      "drawer" : "advanced drawer navigation",
+      "video" : "Video player",
+      "btmbar":  "Barre de navigation",
+      "drawer" : "Drawer avancé nouvelle génération",
       "seum": "L'application a été développée avec aucun boilerplate"
     },
     "navigation": {

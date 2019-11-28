@@ -38,7 +38,11 @@
       "star": "Star icon color status",
       "hooks": "Hooks",
       "ux": "UX Approach",
-      "seum": "This app was made without any boilerplate"
+      "seum": "This app was made without any boilerplate",
+      "storerx": "store redux",
+      "video" : "video player for trailer",
+      "btmbar":  "bottom bar",
+      "drawer" : "advanced drawer navigation",
     },
     "navigation": {
       "home" : "Home",
