@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
   });
 
 const SigninScreen = ({navigation}) => {
+    navigation.navigationOptions = {
+      header: 'none',
+      };
 
 navigation.navigationOptions = {
   header: 'none',
@@ -41,15 +44,20 @@ navigation.navigationOptions = {
 
     // stored logins
     const state = useSelector(state => state.signReducer);
+    const user = useSelector(state => state.usersReducer).username
     const dispatch = useDispatch();
 
     console.log("appel ?");
 
     // call crud firebase auth (signIn)
+    // store user
     const mySignin = async () => {
       const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
-      if(tmp==false)
+      if(tmp==false){
           dispatch(setMessage("Username not found or wrong password"))
+      }else {
+          dispatch(addUser({ username : state.username, password : state.password}))
+      }
     }
 
     return(
