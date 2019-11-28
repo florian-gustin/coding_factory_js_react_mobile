@@ -64,10 +64,11 @@ const MyDrawer = ({navigation}) => {
             <Divider />
             {handleStateColor("Settings", "settings-outline")}
             <Divider />
+            {handleStateColor("Features", "feature-search")}
+            <Divider />
             {handleStateColor("About", "information")}
             <Divider />
-            {handleStateColor("Features", "information")}
-            <Divider />
+
             <View
                 style={{
                     marginTop: 350,
