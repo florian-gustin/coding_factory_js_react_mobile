@@ -51,5 +51,8 @@
       "about" : "A propos",
       "features": "Fonctions",
       "search": "Rechercher"
+    },
+    "search": {
+      "placeholder": "Rechercher un film..."
     }
 }
