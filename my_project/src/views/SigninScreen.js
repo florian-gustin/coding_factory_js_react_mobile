@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { username, password, clearSign, setMessage, setLogged, setDarkMode } from '../actions';
+import {username, password, clearSign, setMessage, setLogged, setDarkMode, addUser} from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {signInUser} from '../helpers/vendors/Firebase'
 import i118n from '../components/i118n';
