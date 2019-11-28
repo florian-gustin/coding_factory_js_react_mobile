@@ -43,6 +43,7 @@ const SettingsScreen = () => {
       <SectionRow text={i118n.t('settings.sectionGeneral')}>
         <SwitchRow 
           text={i118n.t('settings.darkmode')}
+          value={true}
         />
       </SectionRow>
       <SectionRow text={i118n.t('settings.sectionAccount')}>

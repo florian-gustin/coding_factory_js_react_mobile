@@ -14,6 +14,9 @@ const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
+    const darkMode = useSelector(state => state.darkModeReducer);
+
+    console.log("dark mode", darkMode);
 
     // loading data on change of searched text
     useEffect(() => {

@@ -88,3 +88,18 @@ export const updateUser = () => {
         payload : v
     }
 }
+
+// Dark Mode (et non pas Dark Horse de Katy Perry)
+
+export const toggleDarkMode = () => {
+    return {
+        type: "TOGGLE_DARKMODE"
+    }
+}
+
+export const setDarkMode = (v) => {
+    return {
+        type : "SET_DARKMODE",
+        payload: v
+    }
+}

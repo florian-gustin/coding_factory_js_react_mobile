@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { username, password, clearSign, setMessage, setLogged } from '../actions';
+import { username, password, clearSign, setMessage, setLogged, setDarkMode } from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {signInUser} from '../helpers/vendors/Firebase'
 import i118n from '../components/i118n';
+
+import { useDarkMode, useDarkModeContext } from 'react-native-dark-mode'
 
 const styles = StyleSheet.create({
     background: {
@@ -35,6 +37,7 @@ const SigninScreen = ({navigation}) => {
 navigation.navigationOptions = {
   header: 'none',
   };
+  const dk = useSelector(state => state.darkModeReducer);
 
     // stored logins
     const state = useSelector(state => state.signReducer);
@@ -45,6 +48,9 @@ navigation.navigationOptions = {
       const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
       if(tmp==false)
           dispatch(setMessage("Username not found or wrong password"))
+  dispatch(setDarkMode(useDarkMode()));
+  console.log("dk", useDarkModeContext());
+  console.log("dk state", dk);
     }
 
     return(
