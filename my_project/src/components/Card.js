@@ -10,10 +10,12 @@ const MyComponent = ({item}) => {
   const dispatch = useDispatch()
   const data = item
   const { navigate } = useNavigation();
+  const user = useSelector(state => state.usersReducer).username
 
   // quick color state hooks at grey by default
   const [iconCol, setIconCol] = useState("grey")
 
+  // loading verif
   useEffect(() => {
     checkStatusFavorite()
   })
@@ -22,7 +24,7 @@ const MyComponent = ({item}) => {
   // check if exist
   // set icon color for displaying
   const checkStatusFavorite = async() => {
-    const tmp = await getRowFromFirestore('tmdb', data.id.toString())
+    const tmp = await getRowFromFirestore(user, data.id.toString())
 
     if(tmp!=undefined) {
       setIconCol("orange")
@@ -32,7 +34,7 @@ const MyComponent = ({item}) => {
   // call crud firebase (c)
   // set icon color for displaying
   const addFavoriteToFirestore = async() => {
-    const tmp = await addtoFirestore('tmdb', data.id.toString(), data.id.toString(), data.title, data.poster)
+    const tmp = await addtoFirestore(user, data.id.toString(), data.id.toString(), data.title, data.poster)
 
     setIconCol("orange")
   }
@@ -40,7 +42,7 @@ const MyComponent = ({item}) => {
   // call crud firebase (d)
   // set icon color for displaying
   const removeFavoriteFromFirestore = async() => {
-    const tmp = await deleteFromFirestore('tmdb', data.id.toString())
+    const tmp = await deleteFromFirestore(user, data.id.toString())
 
     setIconCol("grey")
   }

@@ -37,7 +37,7 @@ const SigninScreen = ({navigation}) => {
 
     // stored logins
     const state = useSelector(state => state.signReducer);
-    const user = useSelector(state => state.usersReducer)
+    const user = useSelector(state => state.usersReducer).username
     const dispatch = useDispatch();
 
     // call crud firebase auth (signIn)
