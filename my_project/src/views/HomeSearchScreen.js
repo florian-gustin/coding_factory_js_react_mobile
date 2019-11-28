@@ -14,6 +14,7 @@ const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
+    const user = useSelector(state => state.usersReducer).username
 
     // loading screen
     const [loading, setLoading] = useState(true)

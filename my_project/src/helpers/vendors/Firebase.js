@@ -2,10 +2,12 @@ import firebase from "@react-native-firebase/app";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 
+
 // get data from firestore
-export const getDataFromFirestore = async(collectionName) => {
+export const getDataFromFirestore = async(collectionName, user) => {
     const documentSnapshot = await firestore()
         .collection(collectionName)
+        .where('user', '==', user)
         .get();
 
     const allData = documentSnapshot.docs.map(doc => doc.data())
@@ -14,21 +16,23 @@ export const getDataFromFirestore = async(collectionName) => {
 }
 
 // get doc from firestore
-export const getRowFromFirestore = async(collectionName, docId) => {
+export const getRowFromFirestore = async(collectionName, docId, user) => {
     const documentSnapshot = await firestore()
         .collection(collectionName)
         .doc(docId.toString())
+        .where('user', '==', user)
         .get()
 
     return documentSnapshot.data()
 }
 
 // add doc to firestore
-export const addtoFirestore = async(collectionName, docId, idFromApi, title, posterPath) => {
+export const addtoFirestore = async(collectionName, docId, idFromApi, title, posterPath, user) => {
     const documentRef = await firebase.firestore().collection(collectionName).doc(docId.toString()).set({
         idFromApi: idFromApi,
         title: title,
         posterPath: posterPath,
+        user : user
     });
 }
 

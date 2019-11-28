@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/my_project/src/views/MovieGenScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/src/helpers/vendors/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/helpers/vendors/Firebase.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_project/src/views/HomeSearchScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/views/HomeSearchScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_project/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +102,7 @@
       <workItem from="1574679848097" duration="43000" />
       <workItem from="1574679903878" duration="857000" />
       <workItem from="1574807958518" duration="12329000" />
-      <workItem from="1574854243510" duration="27893000" />
+      <workItem from="1574854243510" duration="29389000" />
     </task>
     <servers />
   </component>

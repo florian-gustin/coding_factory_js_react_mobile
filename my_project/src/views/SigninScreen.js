@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { username, password, clearSign, setMessage, setLogged } from '../actions';
+import {username, password, clearSign, setMessage, setLogged, addUser} from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {signInUser} from '../helpers/vendors/Firebase'
 import i118n from '../components/i118n';
@@ -31,20 +31,24 @@ const styles = StyleSheet.create({
   });
 
 const SigninScreen = ({navigation}) => {
-
     navigation.navigationOptions = {
       header: 'none',
       };
 
     // stored logins
     const state = useSelector(state => state.signReducer);
+    const user = useSelector(state => state.usersReducer)
     const dispatch = useDispatch();
 
     // call crud firebase auth (signIn)
+    // store user
     const mySignin = async () => {
       const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
-      if(tmp==false)
+      if(tmp==false){
           dispatch(setMessage("Username not found or wrong password"))
+      }else {
+          dispatch(addUser({ username : state.username, password : state.password}))
+      }
     }
 
     return(
