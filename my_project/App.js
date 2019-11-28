@@ -19,11 +19,9 @@ const store = createStore(allReducers)
 const App: () => React$Node = () => {
   return (
       <Provider store={store}>
-        <DarkModeProvider mode="dark">
           <PaperProvider>
           <DrawerNavigation />
           </PaperProvider>
-        </DarkModeProvider>
       </Provider>
   );
 };

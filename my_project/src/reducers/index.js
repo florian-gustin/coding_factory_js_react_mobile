@@ -4,6 +4,7 @@ import usersReducer from "./usersReducer";
 import {combineReducers} from "redux";
 import searchedTextReducer from "./searchedTextReducer";
 import signReducer from "./signReducer";
+import darkModeReducer from "./darkModeReducer";
 
 
 const allReducers = combineReducers({
@@ -11,7 +12,8 @@ const allReducers = combineReducers({
     favoritesListReducer,
     usersReducer,
     searchedTextReducer,
-    signReducer
+    signReducer,
+    darkModeReducer
 })
 
 export default allReducers
