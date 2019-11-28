@@ -158,9 +158,6 @@ const DrawerNavigator = createDrawerNavigator({
     About : {
         screen: AboutScreen
     },
-    Settings : {
-        screen : SettingsScreen
-    },
     Features : {
         screen : FeaturesHistoryScreen
     }
