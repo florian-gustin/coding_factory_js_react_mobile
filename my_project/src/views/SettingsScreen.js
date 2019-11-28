@@ -7,10 +7,12 @@ import ReactNativeSettingsPage, {
   SliderRow
 } from 'react-native-settings-page';
 import { Button, Paragraph, Dialog, Portal, RadioButton } from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Text, View, Alert, StyleSheet, } from "react-native"
 
 import i118n from '../components/i118n';
+import { toggleDarkMode } from '../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,6 +35,10 @@ const styles = StyleSheet.create({
 
 const SettingsScreen = () => {
 
+    const dk = useSelector(state => state.darkModeReducer);
+    const dispatch = useDispatch();
+
+    console.log("DK SETTINGS", dk);
 
     return (
       <>
@@ -43,7 +49,8 @@ const SettingsScreen = () => {
       <SectionRow text={i118n.t('settings.sectionGeneral')}>
         <SwitchRow 
           text={i118n.t('settings.darkmode')}
-          value={true}
+          _value={dk}
+          _onValueChange={() => dispatch(toggleDarkMode())}
         />
       </SectionRow>
       <SectionRow text={i118n.t('settings.sectionAccount')}>

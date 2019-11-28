@@ -14,9 +14,9 @@ const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
-    const darkMode = useSelector(state => state.darkModeReducer);
 
-    console.log("dark mode", darkMode);
+
+    const darkMode = useSelector(state => state.darkModeReducer);
 
     // loading data on change of searched text
     useEffect(() => {
@@ -67,7 +67,7 @@ const HomeSearchScreen = () => {
     }
 
   return (
-    <SafeAreaView style={{flex: 1 }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: (darkMode) ? "black": "white" }}>
       <View style={styles.box}>
           <Search />
       </View>
