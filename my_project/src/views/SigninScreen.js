@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
 
 const SigninScreen = ({navigation}) => {
 
-navigation.navigationOptions = {
-  header: 'none',
-  };
+    navigation.navigationOptions = {
+      header: 'none',
+      };
 
     // stored logins
     const state = useSelector(state => state.signReducer);
