@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
 import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
 import {TouchableOpacity,View,StyleSheet} from "react-native";
-import * as React from 'react';
-import { View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; 
 
-import { IconButton, Colors } from 'react-native-paper';
 import {
     createDrawerNavigator
 } from 'react-navigation-drawer';
@@ -39,47 +36,6 @@ const MyHamburger = ({navigation}) => (
 // drawer navigation component
 const MyDrawer = ({navigation}) => {
     const [active, setActive] = useState('Home')
-const TabNavigator = createBottomTabNavigator({
-    Search: { 
-        screen: HomeSearchScreen,
-        navigationOptions:{  
-            tabBarLabel:'Search',  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
-                </View>),
-        } },
-    Favorites: { 
-        screen: ProfileScreen,
-        navigationOptions:{  
-            tabBarLabel:'Favorites',  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
-                </View>),
-          }  
-    }, 
-    // Settings :{
-    //     screen : SettingsScreen,
-    //     navigationOptions:{
-    //         tabBarLabel:'Settings',
-    //         tabBarIcon: ({ tintColor }) => (  
-    //             <View>  
-    //                 <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
-    //             </View>),  
-    //     }
-    // }, 
-    Info: { 
-        screen: AboutScreen,
-        navigationOptions:{  
-            tabBarLabel:'About Us',  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
-                </View>),  
-        }  
-    },  
-});
 
     function handleStateColor(screen, icon) {
         return(
@@ -134,6 +90,47 @@ const TabNavigator = createBottomTabNavigator({
     )
 
 }
+const TabNavigator = createBottomTabNavigator({
+    Home: { 
+        screen: HomeSearchScreen,
+        navigationOptions:{  
+            tabBarLabel:'Home',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
+                </View>),
+        } },
+    Profile: { 
+        screen: ProfileScreen,
+        navigationOptions:{  
+            tabBarLabel:'Profile',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
+                </View>),
+          }  
+    }, 
+    Settings :{
+        screen : SettingsScreen,
+        navigationOptions:{
+            tabBarLabel:'Settings',
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
+                </View>),  
+        }
+    }, 
+    About: { 
+        screen: AboutScreen,
+        navigationOptions:{  
+            tabBarLabel:'About',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
+                </View>),  
+        }  
+    },  
+});
 
 const styles = StyleSheet.create({
     listItem : {
@@ -172,9 +169,9 @@ const MainStack = createStackNavigator({
         header : MyHamburger({navigation})
         })
     },
-    // Home: {
-    //     screen: HomeSearchScreen,
-    // },
+    Home: {
+        screen: HomeSearchScreen,
+    },
     Detail : {
         screen: MovieDetailScreen
     },
