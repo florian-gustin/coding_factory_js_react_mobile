@@ -4,3 +4,5 @@ exercices/node_modules/
 exercices/ios/
 
 exercices/android/
+
+my_project/src/helpers/vendors/YoutubeApiKey.js
