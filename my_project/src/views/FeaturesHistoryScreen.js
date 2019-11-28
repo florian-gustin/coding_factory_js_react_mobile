@@ -6,7 +6,7 @@ import i118n from '../components/i118n';
 
 
 
-const FadeInView = (props) => {
+const FadeInView = (props, duration) => {
     const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
 
     React.useEffect(() => {
@@ -108,7 +108,12 @@ const FeaturesHistoryScreen = () => {
 
             </FadeInView>
             <FadeInView style={{height: 50}}>
-                <Text style={{fontSize: 12, textAlign: 'center', margin: 10, textTransform: 'uppercase', fontWeight : 'bold'}}>15 - UX</Text>
+                <Text style={{fontSize: 12, textAlign: 'center', margin: 10, textTransform: 'uppercase', fontWeight : 'bold'}}>15 - hooks</Text>
+                <Divider />
+
+            </FadeInView>
+            <FadeInView style={{height: 50}}>
+                <Text style={{fontSize: 12, textAlign: 'center', margin: 10, textTransform: 'uppercase', fontWeight : 'bold'}}>16 - UX</Text>
                 <Divider />
 
             </FadeInView>
