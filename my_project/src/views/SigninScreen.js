@@ -3,7 +3,8 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { username, password, clearSign, setMessage, setLogged } from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
-
+import {signInUser} from '../helpers/vendors/Firebase'
+import i118n from '../components/i118n';
 
 const styles = StyleSheet.create({
     background: {
@@ -34,71 +35,63 @@ const SigninScreen = ({navigation}) => {
 navigation.navigationOptions = {
   header: 'none',
   };
-  const state = useSelector(state => state.signReducer);
-  const profile = useSelector(state => state.usersReducer);
 
-  const dispatch = useDispatch();
+    // stored logins
+    const state = useSelector(state => state.signReducer);
+    const dispatch = useDispatch();
 
-  const signinProcess = (usernameField, password) => {
-    let result = profile.filter(element => {
-      return usernameField.indexOf(element.username) !== -1;
-    });    
-    
-    if(result.length > 0) {
-      if(result[0].username == usernameField && result[0].password == password) {
-        dispatch(setLogged(true));
-        navigation.navigate("DrawerNavigator")
-      }else {
-        dispatch(setMessage("Username not found or wrong password"))
-      }
-    }else {
-      dispatch(setMessage("Username not found"))
+    // call crud firebase auth (signIn)
+    const mySignin = async () => {
+      const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
+      if(tmp==false)
+          dispatch(setMessage("Username not found or wrong password"))
     }
-  }
 
     return(
         <ImageBackground
         source={require("../assets/background.png")}
         resizeMode="repeat"
         style={styles.background}>
-            <View style={styles.container}> 
+            <View style={styles.container}>
             <Text>{state.message}</Text>
-                <Text style={styles.header}>Welcome back.</Text>
+                <Text style={styles.header}>{i118n.t("signin.welcome")}</Text>
                 <TextInput
                     style={styles.text}
-                    label='Username'
+                    label={i118n.t("signin.labelUsername")}
                     value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
                     onChange={(t) => dispatch(username(t.nativeEvent.text))}
+                    // add username to store
                 />
                 <TextInput
                     style={styles.text}
-                    label='Password'
+                    label={i118n.t("signin.labelPassword")}
                     value={state.password}
                     onChange={(t) => dispatch(password(t.nativeEvent.text))}
+                    // add password to store
                     keyboardType="visible-password"
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
                 />
-                  <Button style={{width:200}} mode="contained" onPress={() => {
-                    signinProcess(state.username, state.password);
+                  <Button style={{width:200}} mode="contained" onPress={async () => {
+                    mySignin()
                   }}>
-                    Sign in
+                    {i118n.t("signin.signinBtn")}
                   </Button>
                   <Button  mode="text" onPress={() => {
                     dispatch(clearSign())
                     navigation.navigate("Signup")
                    } }>
-                    ... or Sign up
+                    {i118n.t("signin.orSignup")}
                   </Button>
 
             </View>
         </ImageBackground>
     );
-    
+
 }
 
 

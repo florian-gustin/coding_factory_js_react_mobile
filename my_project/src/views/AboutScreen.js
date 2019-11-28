@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text } from 'react-native';
+import i118n from '../components/i118n';
+
 
 const style = StyleSheet.create({
   background: {
@@ -29,10 +31,10 @@ const AboutScreen = () => {
 
   return (
     <SafeAreaView style={style.container}>
-      <Text style={style.header}>Made by Florian & Cedric</Text>
-      <Text>For Coding Factory</Text>
+      <Text style={style.header}>{i118n.t("about.credit")}</Text>
+      <Text>{i118n.t("about.licensing")}</Text>
       <Text>Release date: 7 November 2019</Text>
-      <Text>Github: flow2dot0/CedricLPHN</Text>
+      <Text>{i118n.t("about.github")}</Text>
     </SafeAreaView>
 
   )

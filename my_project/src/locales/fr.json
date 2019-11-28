@@ -1,0 +1,28 @@
+{
+    "settings": {
+      "name": "Paramètres",
+      "sectionGeneral": "Général",
+      "darkmode": "Mode Nuit",
+      "sectionAccount": "Compte",
+      "logout": "Déconnexion"
+    },
+    "signin" : {
+      "wrongUsernameOrPassword" : "Utilisateur ou mot de passe incorrect",
+      "wrongUsername": "Utilisateur introuvable",
+      "welcome": "Hey !",
+      "orSignup": "... ou s'inscrire",
+      "labelUsername": "Adresse Email",
+      "labelPassword": "Mot de passe",
+      "signinBtn": "Connexion"
+    },
+    "signup": {
+      "title": "Inscription",
+      "create": "Créer mon compte",
+      "alreadyAccount": "J'ai déjà un compte"
+    },
+    "about": {
+      "credit": "Fait par Florian & Cedric",
+      "licensing": "Pour la Coding Factory",
+      "github": "Github: flow2dot0/CedricLPHN"
+    }
+}

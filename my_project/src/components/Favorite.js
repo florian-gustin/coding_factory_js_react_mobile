@@ -1,21 +1,17 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native'
 import { Card, Title, IconButton, Colors } from 'react-native-paper';
-import {useDispatch} from 'react-redux';
-import {removeFavorite} from "../actions";
 import { useNavigation } from 'react-navigation-hooks'
+import {deleteFromFirestore} from '../helpers/vendors/Firebase'
 
 const Favorite = ({item}) => {
 
   const data = item
-  const dispatch = useDispatch();
   const { navigate } = useNavigation();
 
-
-
-  function deleteThisFavorite() {
-    dispatch(removeFavorite(data))
-
+  // call crud firebase (d)
+  async function deleteThisFavorite() {
+    const tmp = await deleteFromFirestore('tmdb', data.idFromApi.toString())
   }
 
   return (
@@ -39,13 +35,11 @@ const Favorite = ({item}) => {
                 icon="delete"
                 color={Colors.red500}
                 size={20}
-                onPress={() => {
+                onPress={async () => {
                   deleteThisFavorite()
                 }}
               />
             </View>
-
-
 
           </View>
         </Card.Content>

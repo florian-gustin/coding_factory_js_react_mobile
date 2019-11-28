@@ -9,20 +9,22 @@ import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
 import {getData} from "../actions";
 //import all the basic component we have used
 
+
 const HomeSearchScreen = () => {
     const dispatch = useDispatch()
     const searchedText = useSelector(state => state.searchedTextReducer)
     const data = useSelector(state => state.dataFromApiReducer).data
 
-
+    // loading data on change of searched text
     useEffect(() => {
       if(searchedText) {
        loadingData()
       }
     }, [searchedText])
 
-
-  function loadingData() {
+    // call API
+    // add data to store
+    function loadingData() {
           getFilmsFromSearchedText(searchedText).then(data => {
               let resp = data.results;
 
@@ -46,9 +48,10 @@ const HomeSearchScreen = () => {
               }
               dispatch(getData(list))
           });
-  }
+    }
 
-  const cardGenerator = () => {
+    // generate a flatList of Cards
+    const cardGenerator = () => {
     if(data!="") {
       return (
         <FlatList
@@ -58,7 +61,7 @@ const HomeSearchScreen = () => {
         />
       )
     }
-  }
+    }
 
   return (
     <SafeAreaView style={{flex: 1 }}>
