@@ -38,6 +38,10 @@
       "star": "Star icon color status",
       "hooks": "Hooks",
       "ux": "UX Approach",
+      "storerx": "store redux",
+      "video" : "video player for trailer",
+      "btmbar":  "bottom bar",
+      "drawer" : "advanced drawer navigation",
       "seum": "L'application a été développée avec aucun boilerplate"
     },
     "navigation": {
