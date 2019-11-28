@@ -37,20 +37,19 @@ const SigninScreen = ({navigation}) => {
 navigation.navigationOptions = {
   header: 'none',
   };
-  const dk = useSelector(state => state.darkModeReducer);
+    const dk = useSelector(state => state.darkModeReducer);
 
     // stored logins
     const state = useSelector(state => state.signReducer);
     const dispatch = useDispatch();
+
+    console.log("appel ?");
 
     // call crud firebase auth (signIn)
     const mySignin = async () => {
       const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
       if(tmp==false)
           dispatch(setMessage("Username not found or wrong password"))
-  dispatch(setDarkMode(useDarkMode()));
-  console.log("dk", useDarkModeContext());
-  console.log("dk state", dk);
     }
 
     return(
