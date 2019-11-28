@@ -52,12 +52,6 @@ const SettingsScreen = () => {
           _onValueChange={() => dispatch(toggleDarkMode())}
         />
       </SectionRow>
-      <SectionRow text={i118n.t('settings.sectionAccount')}>
-        <NavigateRow
-          text={i118n.t('settings.logout')}
-          
-           />
-      </SectionRow>
       <SectionRow text='Informations'>
       <NavigateRow
           text='Build: 0666'

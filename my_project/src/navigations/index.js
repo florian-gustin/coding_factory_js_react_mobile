@@ -27,6 +27,9 @@ import {
 
 import { username,  setDarkMode } from '../actions';
 
+import i118n from '../components/i118n';
+
+
 
 // hambuger icon component
 const MyHamburger = ({navigation}) => (
@@ -43,7 +46,7 @@ const MyDrawer = ({navigation}) => {
     const [active, setActive] = useState('Home')
     const darkMode = useSelector(state => state.darkModeReducer);
 
-    function handleStateColor(screen, icon) {
+    function handleStateColor(screen, title, icon) {
         return(
             <TouchableOpacity
                 onPress={() => {
@@ -58,7 +61,7 @@ const MyDrawer = ({navigation}) => {
                     titleStyle={{
                         fontWeight: 'bold', textAlign: 'center',marginLeft: -45, letterSpacing: 2, textTransform: 'uppercase', color: (active == screen? 'white' : 'black')
                     }}
-                    title={screen}
+                    title={title}
                     left={props => <List.Icon {...props} icon={icon} color={active == screen? Colors.white : Colors.grey} />}
                 />
             </TouchableOpacity>
@@ -67,15 +70,15 @@ const MyDrawer = ({navigation}) => {
 
     return (
         <View>
-            {handleStateColor("Home", "magnify")}
+            {handleStateColor("Home", i118n.t("navigation.home"), "magnify")}
             <Divider />
-            {handleStateColor("Profile", "account")}
+            {handleStateColor("Profile", i118n.t("navigation.profile"), "account")}
             <Divider />
-            {handleStateColor("Settings", "settings-outline")}
+            {handleStateColor("Settings", i118n.t("navigation.settings"), "settings-outline")}
             <Divider />
-            {handleStateColor("Features", "feature-search")}
+            {handleStateColor("Features", i118n.t("navigation.features"), "feature-search")}
             <Divider />
-            {handleStateColor("About", "information")}
+            {handleStateColor("About", i118n.t("navigation.about"), "information")}
            
             <Divider />
 
@@ -104,7 +107,7 @@ const TabNavigator = createBottomTabNavigator({
     Home: { 
         screen: HomeSearchScreen,
         navigationOptions:{  
-            tabBarLabel:'Search',  
+            tabBarLabel:i118n.t("navigation.search"),  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
@@ -119,7 +122,7 @@ const TabNavigator = createBottomTabNavigator({
     Profile: { 
         screen: ProfileScreen,
         navigationOptions:{  
-            tabBarLabel:'Favorites',  
+            tabBarLabel:i118n.t("navigation.profile"),  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
