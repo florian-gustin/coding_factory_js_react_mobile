@@ -94,20 +94,32 @@ const TabNavigator = createBottomTabNavigator({
     Home: { 
         screen: HomeSearchScreen,
         navigationOptions:{  
-            tabBarLabel:'Home',  
+            tabBarLabel:'Search',  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
                 </View>),
+               tabBarOptions: {
+                activeTintColor: 'white',
+                inactiveTintColor: 'indigo',
+                inactiveBackgroundColor:'white',
+                activeBackgroundColor : 'indigo'
+              }, 
         } },
     Profile: { 
         screen: ProfileScreen,
         navigationOptions:{  
-            tabBarLabel:'Profile',  
+            tabBarLabel:'Favorites',  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
                 </View>),
+                tabBarOptions: {
+                    activeTintColor: 'white',
+                    inactiveTintColor: 'indigo',
+                    inactiveBackgroundColor:'white',
+                    activeBackgroundColor : 'indigo'
+                  }, 
           }  
     }, 
     Settings :{
@@ -117,7 +129,13 @@ const TabNavigator = createBottomTabNavigator({
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
-                </View>),  
+                </View>),
+                tabBarOptions: {
+                    activeTintColor: 'white',
+                    inactiveTintColor: 'indigo',
+                    inactiveBackgroundColor:'white',
+                    activeBackgroundColor : 'indigo'
+                  },  
         }
     }, 
     About: { 
@@ -127,7 +145,13 @@ const TabNavigator = createBottomTabNavigator({
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
-                </View>),  
+                </View>), 
+                tabBarOptions: {
+                    activeTintColor: 'white',
+                    inactiveTintColor: 'indigo',
+                    inactiveBackgroundColor:'white',
+                    activeBackgroundColor : 'indigo'
+                  }, 
         }  
     },  
 });
