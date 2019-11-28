@@ -20,6 +20,7 @@ import ProfileScreen from "../views/ProfileScreen"
 import SigninScreen from '../views/SigninScreen';
 import SingnupScreen from '../views/SignupScreen';
 import SettingsScreen from '../views/SettingsScreen';
+import FeaturesHistoryScreen from "../views/FeaturesHistoryScreen";
 import {
     signOutUser
 } from '../helpers/vendors/Firebase'
@@ -72,9 +73,12 @@ const MyDrawer = ({navigation}) => {
             <Divider />
             {handleStateColor("Settings", "settings-outline")}
             <Divider />
+            {handleStateColor("Features", "feature-search")}
+            <Divider />
             {handleStateColor("About", "information")}
            
             <Divider />
+
             <View
                 style={{
                     marginTop: 350,
@@ -151,6 +155,12 @@ const DrawerNavigator = createDrawerNavigator({
     About : {
         screen: AboutScreen
     },
+    Settings : {
+        screen : SettingsScreen
+    },
+    Features : {
+        screen : FeaturesHistoryScreen
+    }
 },{
     contentComponent: MyDrawer,
     drawerWidth: 300

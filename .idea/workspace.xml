@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f78db87-c3c2-4019-854c-8928e814881e" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/views/SigninScreen.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_project/src/navigations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_project/src/navigations/index.js" afterDir="false" />
+>>>>>>> flow2dot0
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +109,23 @@
       <workItem from="1574940895932" duration="1382000" />
       <workItem from="1574942836721" duration="160000" />
       <workItem from="1574943007901" duration="657000" />
+<<<<<<< HEAD
       <workItem from="1574943706347" duration="452000" />
+=======
+      <workItem from="1574943706347" duration="309000" />
+      <workItem from="1574948143156" duration="21000" />
+      <workItem from="1574948168423" duration="752000" />
+      <workItem from="1574948924381" duration="127000" />
+      <workItem from="1574949055559" duration="582000" />
+      <workItem from="1574949643268" duration="78000" />
+      <workItem from="1574949724972" duration="98000" />
+      <workItem from="1574949825772" duration="41000" />
+      <workItem from="1574949869202" duration="169000" />
+      <workItem from="1574950048187" duration="311000" />
+      <workItem from="1574950362356" duration="600000" />
+      <workItem from="1574950976169" duration="106000" />
+      <workItem from="1574951099832" duration="34000" />
+>>>>>>> flow2dot0
     </task>
     <servers />
   </component>
