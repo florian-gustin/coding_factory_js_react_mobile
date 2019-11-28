@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { addUser } from "../actions";
 import { username, password } from '../actions';
 import auth from '@react-native-firebase/auth';
+import i118n from '../components/i118n';
 
 
 const styles = StyleSheet.create({
@@ -82,11 +83,11 @@ const SignupScreen = ({navigation}) => {
         resizeMode="cover"
         style={styles.background}>
 
-            <View style={styles.container}>
-                <Text style={styles.header}>Register</Text>
+            <View style={styles.container}> 
+                <Text style={styles.header}>{i118n.t("signup.title")}</Text>
                 <TextInput
                     style={styles.text}
-                    label='Email'
+                    label={i118n.t("signin.labelUsername")}
                     value={state.username}
                     mode="outlined"
                     selectionColor="#9c27b0"
@@ -95,10 +96,9 @@ const SignupScreen = ({navigation}) => {
                 />
                 <TextInput
                     style={styles.text}
-                    label='Password'
+                    label={i118n.t("signin.labelPassword")}
                     value={state.password}
                     onChange={(t) => dispatch(password(t.nativeEvent.text))}
-                    keyboardType="visible-password"
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"
@@ -116,10 +116,10 @@ const SignupScreen = ({navigation}) => {
                     }
 
                   }} >
-                    Create my account
+                    {i118n.t("signup.create")}
                   </Button>
                   <Button  mode="text" onPress={() => navigation.navigate("Signin") }>
-                    You have already an account ?
+                    {i118n.t("signup.alreadyAccount")}
                   </Button>
                 <Text style={styles.error}>{msgError}</Text>
             </View>

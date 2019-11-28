@@ -1,0 +1,28 @@
+{
+    "settings": {
+      "name": "Settings",
+      "sectionGeneral": "General",
+      "darkmode": "Dark Mode",
+      "sectionAccount": "Account",
+      "logout": "Logout"
+    },
+    "signin" : {
+      "wrongUsernameOrPassword" : "Username not found or wrong password",
+      "wrongUsername": "Username not found",
+      "welcome": "Welcome back.",
+      "orSignup": "... or Sign up",
+      "labelUsername": "Username",
+      "labelPassword": "Password",
+      "signinBtn": "Sign in"
+    },
+    "signup": {
+      "title": "Register",
+      "create": "Create my account",
+      "alreadyAccount": "You have already an account ?"
+    },
+    "about": {
+      "credit": "Made by Florian & Cedric",
+      "licensing": "For Coding Factory",
+      "github": "Github: flow2dot0/CedricLPHN"
+    }
+}

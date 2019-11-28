@@ -13,6 +13,7 @@ import AboutScreen from "../views/AboutScreen"
 import ProfileScreen from "../views/ProfileScreen"
 import SigninScreen from '../views/SigninScreen';
 import SingnupScreen from '../views/SignupScreen';
+import SettingsScreen from '../views/SettingsScreen';
 import {
     signOutUser
 } from '../helpers/vendors/Firebase'
@@ -111,7 +112,7 @@ const DrawerNavigator = createDrawerNavigator({
 
 // stack navigator
 const MainStack = createStackNavigator({
-     Signin: {
+    Signin: {
         screen: SigninScreen,
         navigationOptions: {
             header: null
