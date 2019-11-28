@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
 import {TouchableOpacity,View,StyleSheet} from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'; 
+import {useSelector} from 'react-redux';
+
 
 import {
     createDrawerNavigator
@@ -18,9 +20,12 @@ import ProfileScreen from "../views/ProfileScreen"
 import SigninScreen from '../views/SigninScreen';
 import SingnupScreen from '../views/SignupScreen';
 import SettingsScreen from '../views/SettingsScreen';
+import FeaturesHistoryScreen from "../views/FeaturesHistoryScreen";
 import {
     signOutUser
 } from '../helpers/vendors/Firebase'
+
+import { username,  setDarkMode } from '../actions';
 
 
 // hambuger icon component
@@ -36,6 +41,7 @@ const MyHamburger = ({navigation}) => (
 // drawer navigation component
 const MyDrawer = ({navigation}) => {
     const [active, setActive] = useState('Home')
+    const darkMode = useSelector(state => state.darkModeReducer);
 
     function handleStateColor(screen, icon) {
         return(
@@ -45,7 +51,7 @@ const MyDrawer = ({navigation}) => {
                     navigation.navigate(screen)
                 }}
                 style={{
-                    backgroundColor: (active == screen? 'indigo' : 'white')
+                    backgroundColor: (active == screen? 'indigo' : 'white'),
                 }}
             >
                 <List.Item
@@ -65,10 +71,14 @@ const MyDrawer = ({navigation}) => {
             <Divider />
             {handleStateColor("Profile", "account")}
             <Divider />
-            {handleStateColor("About", "information")}
-            <Divider />
             {handleStateColor("Settings", "settings-outline")}
             <Divider />
+            {handleStateColor("Features", "feature-search")}
+            <Divider />
+            {handleStateColor("About", "information")}
+           
+            <Divider />
+
             <View
                 style={{
                     marginTop: 350,
@@ -94,42 +104,34 @@ const TabNavigator = createBottomTabNavigator({
     Home: { 
         screen: HomeSearchScreen,
         navigationOptions:{  
-            tabBarLabel:'Home',  
+            tabBarLabel:'Search',  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
                 </View>),
+               tabBarOptions: {
+                activeTintColor: 'white',
+                inactiveTintColor: 'indigo',
+                inactiveBackgroundColor:'white',
+                activeBackgroundColor : 'indigo'
+              }, 
         } },
     Profile: { 
         screen: ProfileScreen,
         navigationOptions:{  
-            tabBarLabel:'Profile',  
+            tabBarLabel:'Favorites',  
             tabBarIcon: ({ tintColor }) => (  
                 <View>  
                     <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
                 </View>),
+                tabBarOptions: {
+                    activeTintColor: 'white',
+                    inactiveTintColor: 'indigo',
+                    inactiveBackgroundColor:'white',
+                    activeBackgroundColor : 'indigo'
+                  }, 
           }  
-    }, 
-    Settings :{
-        screen : SettingsScreen,
-        navigationOptions:{
-            tabBarLabel:'Settings',
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
-                </View>),  
-        }
-    }, 
-    About: { 
-        screen: AboutScreen,
-        navigationOptions:{  
-            tabBarLabel:'About',  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
-                </View>),  
-        }  
-    },  
+    },   
 });
 
 const styles = StyleSheet.create({
@@ -147,9 +149,18 @@ const DrawerNavigator = createDrawerNavigator({
     Profile: {
         screen: ProfileScreen
     },
+    Settings : {
+        screen: SettingsScreen
+    },
     About : {
         screen: AboutScreen
     },
+    Settings : {
+        screen : SettingsScreen
+    },
+    Features : {
+        screen : FeaturesHistoryScreen
+    }
 },{
     contentComponent: MyDrawer,
     drawerWidth: 300

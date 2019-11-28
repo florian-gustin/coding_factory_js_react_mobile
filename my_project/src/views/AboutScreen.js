@@ -1,41 +1,44 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
 import i118n from '../components/i118n';
+import {useDispatch, useSelector} from 'react-redux';
 
 
 const style = StyleSheet.create({
-  background: {
-    flex: 1,
-    width: "100%"
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-    width: "100%",
-    maxWidth: 340,
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   header : {
       fontSize: 24,
       color: "#9c27b0"
   },
   text: {
-      width: "100%",
-      paddingBottom: 5
+      width: "50%",
+      alignItems: "center",
+      paddingBottom: 5,
+      color: 'grey',
+
+    },
+    text2: {
+      width: "35%",
+      alignItems: "center",
+      paddingBottom: 5,
+      color: 'grey',
+
     },
 });
 
 const AboutScreen = () => {
 
+  const darkMode = useSelector(state => state.darkModeReducer);
+
   return (
-    <SafeAreaView style={style.container}>
+    <View style={{flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: (darkMode) ? "black": "white"}}>
       <Text style={style.header}>{i118n.t("about.credit")}</Text>
-      <Text>{i118n.t("about.licensing")}</Text>
-      <Text>Release date: 7 November 2019</Text>
-      <Text>{i118n.t("about.github")}</Text>
-    </SafeAreaView>
+      <Text style={style.text2}>{i118n.t("about.licensing")}</Text>
+      <Text style={style.text}>Release date: 7 November 2019</Text>
+      <Text style={style.text}>{i118n.t("about.github")}</Text>
+    </View>
 
   )
 } 

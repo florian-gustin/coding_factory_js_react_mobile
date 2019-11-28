@@ -10,8 +10,8 @@ import { useDarkMode, useDarkModeContext } from 'react-native-dark-mode'
 
 const styles = StyleSheet.create({
     background: {
-      flex: 1,
-      width: "100%"
+      flex:1,
+      width: "100%",
     },
     container: {
       flex: 1,
@@ -40,7 +40,7 @@ const SigninScreen = ({navigation}) => {
 navigation.navigationOptions = {
   header: 'none',
   };
-    const dk = useSelector(state => state.darkModeReducer);
+    const darkMode = useSelector(state => state.darkModeReducer);
 
     // stored logins
     const state = useSelector(state => state.signReducer);
@@ -64,7 +64,7 @@ navigation.navigationOptions = {
         <ImageBackground
         source={require("../assets/background.png")}
         resizeMode="repeat"
-        style={styles.background}>
+        style={{backgroundColor: (darkMode) ? "black": "white", flex:1}}>
             <View style={styles.container}>
             <Text>{state.message}</Text>
                 <Text style={styles.header}>{i118n.t("signin.welcome")}</Text>

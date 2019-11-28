@@ -47,6 +47,8 @@ const SignupScreen = ({navigation}) => {
   const state = useSelector(state => state.signReducer);
   const dispatch = useDispatch();
   const [msgError, setMsgError] = useState('');
+  const darkMode = useSelector(state => state.darkModeReducer);
+
 
   let error = false
 
@@ -81,7 +83,7 @@ const SignupScreen = ({navigation}) => {
         <ImageBackground
         source={require("../assets/register.jpg")}
         resizeMode="cover"
-        style={styles.background}>
+        style={{backgroundColor: (darkMode) ? "black": "white", flex:1}}>
 
             <View style={styles.container}> 
                 <Text style={styles.header}>{i118n.t("signup.title")}</Text>

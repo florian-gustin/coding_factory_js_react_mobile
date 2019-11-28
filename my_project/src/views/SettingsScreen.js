@@ -15,9 +15,6 @@ import i118n from '../components/i118n';
 import { toggleDarkMode } from '../actions';
 
 const styles = StyleSheet.create({
-  container: {
-    height: 48,
-  },
   row: {
     minHeight: 48,
     flexDirection: 'row',
@@ -38,15 +35,17 @@ const SettingsScreen = () => {
     const dk = useSelector(state => state.darkModeReducer);
     const dispatch = useDispatch();
 
-    console.log("DK SETTINGS", dk);
+
+   // console.log("DK SETTINGS", dk);
 
     return (
       <>
-      <View>
-      <Text style={{padding: 10, fontSize: 30}} >{i118n.t('settings.name')}</Text>
+      <View style = {{backgroundColor: (dk) ? "black": "white"}}>
+      <Text style={{padding: 10, fontSize: 30, color: "grey"}} >{i118n.t('settings.name')}</Text>
       </View>
       <ReactNativeSettingsPage>
-      <SectionRow text={i118n.t('settings.sectionGeneral')}>
+      <SectionRow text={i118n.t('settings.sectionGeneral')}
+      >
         <SwitchRow 
           text={i118n.t('settings.darkmode')}
           _value={dk}
