@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
 import {TouchableOpacity,View,StyleSheet} from "react-native";
-import Icon from 'react-native-vector-icons/Ionicons'; 
+import Icon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 
 
@@ -79,12 +79,12 @@ const MyDrawer = ({navigation}) => {
             {handleStateColor("Features", i118n.t("navigation.features"), "feature-search")}
             <Divider />
             {handleStateColor("About", i118n.t("navigation.about"), "information")}
-           
+
             <Divider />
 
             <View
                 style={{
-                    marginTop: 350,
+                    marginTop: 50,
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center'
@@ -104,37 +104,37 @@ const MyDrawer = ({navigation}) => {
 
 }
 const TabNavigator = createBottomTabNavigator({
-    Home: { 
+    Home: {
         screen: HomeSearchScreen,
-        navigationOptions:{  
-            tabBarLabel:i118n.t("navigation.search"),  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
+        navigationOptions:{
+            tabBarLabel:i118n.t("navigation.search"),
+            tabBarIcon: ({ tintColor }) => (
+                <View>
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>
                 </View>),
                tabBarOptions: {
                 activeTintColor: 'white',
                 inactiveTintColor: 'indigo',
                 inactiveBackgroundColor:'white',
                 activeBackgroundColor : 'indigo'
-              }, 
+              },
         } },
-    Profile: { 
+    Profile: {
         screen: ProfileScreen,
-        navigationOptions:{  
-            tabBarLabel:i118n.t("navigation.profile"),  
-            tabBarIcon: ({ tintColor }) => (  
-                <View>  
-                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
+        navigationOptions:{
+            tabBarLabel:i118n.t("navigation.profile"),
+            tabBarIcon: ({ tintColor }) => (
+                <View>
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>
                 </View>),
                 tabBarOptions: {
                     activeTintColor: 'white',
                     inactiveTintColor: 'indigo',
                     inactiveBackgroundColor:'white',
                     activeBackgroundColor : 'indigo'
-                  }, 
-          }  
-    },   
+                  },
+          }
+    },
 });
 
 const styles = StyleSheet.create({
