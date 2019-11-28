@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {IconButton, Colors, Drawer, List, Divider} from 'react-native-paper';
 import {TouchableOpacity,View,StyleSheet} from "react-native";
+import Icon from 'react-native-vector-icons/Ionicons'; 
+
 import {
     createDrawerNavigator
 } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator} from 'react-navigation-tabs';
+
 
 import HomeSearchScreen from "../views/HomeSearchScreen"
 import MovieDetailScreen from "../views/MovieDetailScreen"
@@ -86,6 +90,47 @@ const MyDrawer = ({navigation}) => {
     )
 
 }
+const TabNavigator = createBottomTabNavigator({
+    Home: { 
+        screen: HomeSearchScreen,
+        navigationOptions:{  
+            tabBarLabel:'Home',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-search'}/>  
+                </View>),
+        } },
+    Profile: { 
+        screen: ProfileScreen,
+        navigationOptions:{  
+            tabBarLabel:'Profile',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-star'}/>  
+                </View>),
+          }  
+    }, 
+    Settings :{
+        screen : SettingsScreen,
+        navigationOptions:{
+            tabBarLabel:'Settings',
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-settings'}/>  
+                </View>),  
+        }
+    }, 
+    About: { 
+        screen: AboutScreen,
+        navigationOptions:{  
+            tabBarLabel:'About',  
+            tabBarIcon: ({ tintColor }) => (  
+                <View>  
+                    <Icon style={[{color: tintColor}]} size={25} name={'ios-help-circle-outline'}/>  
+                </View>),  
+        }  
+    },  
+});
 
 const styles = StyleSheet.create({
     listItem : {
@@ -97,10 +142,10 @@ const styles = StyleSheet.create({
 const DrawerNavigator = createDrawerNavigator({
 
     Home: {
-        screen: HomeSearchScreen,
+        screen: TabNavigator
     },
     Profile: {
-        screen: ProfileScreen,
+        screen: ProfileScreen
     },
     About : {
         screen: AboutScreen
