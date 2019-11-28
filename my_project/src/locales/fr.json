@@ -24,5 +24,28 @@
       "credit": "Fait par Florian & Cedric",
       "licensing": "Pour la Coding Factory",
       "github": "Github: flow2dot0/CedricLPHN"
+    },
+    "features": {
+      "forms" : "Formulaires",
+      "auth": "Authentification Firebase",
+      "storefb": "Store Firebase",
+      "api": "Appels API",
+      "favorites": "Liste des favoris",
+      "languages": "Support des langues",
+      "dk" : "Mode sombre",
+      "animations": "Animations",
+      "loading": "Loading mode",
+      "star": "Star icon color status",
+      "hooks": "Hooks",
+      "ux": "UX Approach",
+      "seum": "L'application a été développée avec aucun boilerplate"
+    },
+    "navigation": {
+      "home" : "Home",
+      "profile": "Mes favoris",
+      "settings": "Paramètres",
+      "about" : "A propos",
+      "features": "Fonctions",
+      "search": "Rechercher"
     }
 }

@@ -35,22 +35,18 @@ const FadeInView = (props, duration) => {
 const FeaturesHistoryScreen = () => {
 
     const allFeatures = [
-        "form submittion",
-        "auth firebase",
-        "store firestore",
-        "store redux",
-        "call API",
-        "list of favorites",
-        "video player for trailer",
-        "bottom bar",
-        "advanced drawer navigation",
-        "languages EN/FR",
-        "dark mode",
-        "animations",
-        "loading mode",
-        "star icon color status",
-        "hooks",
-        "UX approach"
+        i118n.t("features.forms"),
+        i118n.t("features.auth"),
+        i118n.t("features.storefb"),
+        i118n.t("features.api"),
+        i118n.t("features.favorites"),
+        i118n.t("features.languages"),
+        i118n.t("features.dk"),
+        i118n.t("features.animations"),
+        i118n.t("features.loading"),
+        i118n.t("features.star"),
+        i118n.t("features.hooks"),
+        i118n.t("features.ux")
     ]
 
     const myAnimation = (iterator, text, delay) => {
@@ -72,7 +68,7 @@ const FeaturesHistoryScreen = () => {
                 <Text style={{
                     fontSize: 18, textAlign: 'center', textTransform: 'uppercase', fontWeight : 'bold', color: 'indigo'
                 }}
-                >This app was made without any boilerplate</Text>
+                >{i118n.t("features.seum")}</Text>
 
             </FadeInView>
             <View style={{marginTop: 20}}>

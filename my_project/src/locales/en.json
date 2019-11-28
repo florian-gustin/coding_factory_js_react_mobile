@@ -24,5 +24,28 @@
       "credit": "Made by Florian & Cedric",
       "licensing": "For Coding Factory",
       "github": "Github: flow2dot0/CedricLPHN"
+    },
+    "features": {
+      "forms" : "Form submission",
+      "auth": "Auth Firebase",
+      "storefb": "Store Firebase",
+      "api": "Call API",
+      "favorites": "Favorites",
+      "languages": "Multiples translation available",
+      "dk" : "Dark mode",
+      "animations": "Animations",
+      "loading": "Loading mode",
+      "star": "Star icon color status",
+      "hooks": "Hooks",
+      "ux": "UX Approach",
+      "seum": "This app was made without any boilerplate"
+    },
+    "navigation": {
+      "home" : "Home",
+      "profile": "Favorites",
+      "settings": "Settings",
+      "about" : "About",
+      "features": "Features",
+      "search": "Search"
     }
 }
