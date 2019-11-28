@@ -84,7 +84,7 @@ const MyDrawer = ({navigation}) => {
 
             <View
                 style={{
-                    marginTop: 50,
+                    marginTop: 300,
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center'
