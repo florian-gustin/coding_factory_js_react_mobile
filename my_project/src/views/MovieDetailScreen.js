@@ -26,8 +26,6 @@ const DetailsScreen = () => {
 
   return (
     <ScrollView style={{ flex: 1, width: '100%', padding: 5, backgroundColor : (darkMode) ? "black": "white"}}>
-      <ImageBackground source={{ uri: data.poster }} style={{width: '100%', height: 400}}>
-    <ScrollView style={{ flex: 1, width: '100%', padding: 5 }}>
       {movie != 0 ? (
               <YouTube
               apiKey={YOUTUBE_API_KEY}

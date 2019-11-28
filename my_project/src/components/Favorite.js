@@ -4,7 +4,6 @@ import { Card, Title, IconButton, Colors } from 'react-native-paper';
 import { useNavigation } from 'react-navigation-hooks'
 import {useSelector} from 'react-redux';
 import {deleteFromFirestore} from '../helpers/vendors/Firebase'
-import {useSelector} from "react-redux";
 
 const Favorite = ({item}) => {
 
