@@ -43,6 +43,7 @@
       "video" : "video player for trailer",
       "btmbar":  "bottom bar",
       "drawer" : "advanced drawer navigation",
+      "navigationEvents" : "refresh ours components using navigation events"
     },
     "navigation": {
       "home" : "Home",

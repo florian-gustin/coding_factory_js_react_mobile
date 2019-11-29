@@ -6,8 +6,8 @@ import {View, StyleSheet, SafeAreaView, FlatList, Text, ActivityIndicator} from 
 import Card from '../components/Card'
 import Search from '../components/Search';
 import {getFilmsFromSearchedText} from '../helpers/vendors/TMDB'
-import {getData} from "../actions";
-
+import {addText, getData} from "../actions";
+import { NavigationEvents } from 'react-navigation';
 //import all the basic component we have used
 
 
@@ -68,7 +68,7 @@ const HomeSearchScreen = () => {
       return (
         <FlatList
           style = {{backgroundColor: (darkMode) ? "black": "white"}}
-          
+
           data={data}
           renderItem={({item}) => <Card item={item}/> }
           keyExtractor={item => item.id.toString()}
@@ -79,6 +79,13 @@ const HomeSearchScreen = () => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: (darkMode) ? "black": "white" }}>
+        <NavigationEvents
+            onDidBlur={() => {
+                // refreshing component using nav event + redux
+                dispatch(getData({}))
+                dispatch(addText(""))
+            }}
+        />
       <View style={styles.box}>
           <Search />
       </View>

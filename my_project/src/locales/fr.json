@@ -42,7 +42,8 @@
       "video" : "Video player",
       "btmbar":  "Barre de navigation",
       "drawer" : "Drawer avancé nouvelle génération",
-      "seum": "L'application a été développée avec aucun boilerplate"
+      "seum": "L'application a été développée avec aucun boilerplate",
+      "navigationEvents" : "Mise à jour des components avec navigation events"
     },
     "navigation": {
       "home" : "Accueil",

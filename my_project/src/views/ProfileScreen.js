@@ -17,7 +17,7 @@ const ProfileScreen = () => {
   const state = useSelector(state => state.favoritesListReducer)
   const user = useSelector(state => state.usersReducer).username
 
-  const [favList, setFavList] = useState("")
+  const [favList, setFavList] = useState(false)
 
   // loading
   useEffect(() => {
@@ -27,17 +27,18 @@ const ProfileScreen = () => {
   // get the list of favorites from firestore
   const getAllFavorites = async() => {
     const tmp = await getDataFromFirestore(user)
-    setFavList(tmp)
+    if(tmp.length>0)
+      setFavList(tmp)
   }
 
   // generate the flatList of favorites
   function listOfFavorites() {
     return (
-      <FlatList
-        data={favList}
-        renderItem={({item}) => <Favorite item={item}/> }
-        keyExtractor={item => item.idFromApi.toString()}
-      />
+        <FlatList
+            data={favList}
+            renderItem={({item}) => <Favorite item={item}/> }
+            keyExtractor={item => item.idFromApi.toString()}
+        />
     )
   }
 
