@@ -82,8 +82,8 @@ const HomeSearchScreen = () => {
         <NavigationEvents
             onDidBlur={() => {
                 // refreshing component using nav event + redux
-                dispatch(getData({}))
-                dispatch(addText(""))
+                // dispatch(getData({}))
+                // dispatch(addText(""))
             }}
         />
       <View style={styles.box}>
