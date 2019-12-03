@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import {username, password, clearSign, setMessage, setLogged, setDarkMode, addUser} from '../actions';
+import {username, password, clearSign, setMessage, setLogged, addUser, addFavorite, setFavorite} from '../actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {signInUser} from '../helpers/vendors/Firebase'
+import {signInUser, getDataFromFirestore} from '../helpers/vendors/Firebase'
 import i118n from '../components/i118n';
 
 import { useDarkMode, useDarkModeContext } from 'react-native-dark-mode'
@@ -41,10 +41,11 @@ navigation.navigationOptions = {
   header: 'none',
   };
     const darkMode = useSelector(state => state.darkModeReducer);
-
+    
     // stored logins
     const state = useSelector(state => state.signReducer);
-    const user = useSelector(state => state.usersReducer).username
+    console.log(state.email);
+    //const user = useSelector(state => state.usersReducer).username
     const dispatch = useDispatch();
 
     console.log("appel ?");
@@ -52,11 +53,12 @@ navigation.navigationOptions = {
     // call crud firebase auth (signIn)
     // store user
     const mySignin = async () => {
-      const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.username, state.password);
+      const tmp = await signInUser(dispatch(setLogged(true)), dispatch(setMessage("")), navigation, state.email, state.password);
       if(tmp==false){
           dispatch(setMessage("Username not found or wrong password"))
       }else {
-          dispatch(addUser({ username : state.username, password : state.password}))
+          dispatch(addUser({ username : state.email, password : state.password}))
+          getDataFromFirestore(state.email).then((res) => dispatch(setFavorite(res)));
       }
     }
 
@@ -71,7 +73,7 @@ navigation.navigationOptions = {
                 <TextInput
                     style={styles.text}
                     label={i118n.t("signin.labelUsername")}
-                    value={state.username}
+                    value={state.email}
                     mode="outlined"
                     selectionColor="#9c27b0"
                     underlineColor="transparent"

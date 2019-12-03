@@ -4,13 +4,14 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks'
 import {useDispatch, useSelector} from "react-redux";
 import {getRowFromFirestore,addtoFirestore,deleteFromFirestore} from '../helpers/vendors/Firebase'
+import { removeFavorite, addFavorite } from '../actions';
 
 
 const MyComponent = ({item}) => {
   const dispatch = useDispatch()
   const data = item
   const { navigate } = useNavigation();
-  const user = useSelector(state => state.usersReducer).username
+  const user = useSelector(state => state.signReducer).email
 
   // quick color state hooks at grey by default
   const [iconCol, setIconCol] = useState("grey")
@@ -34,7 +35,8 @@ const MyComponent = ({item}) => {
   // call crud firebase (c)
   // set icon color for displaying
   const addFavoriteToFirestore = async() => {
-    const tmp = await addtoFirestore(user, data.id.toString(), data.id.toString(), data.title, data.poster)
+    await addtoFirestore(user, data.id.toString(), data.id.toString(), data.title, data.poster)
+    dispatch(addFavorite(data));
 
     setIconCol("orange")
   }
@@ -42,7 +44,7 @@ const MyComponent = ({item}) => {
   // call crud firebase (d)
   // set icon color for displaying
   const removeFavoriteFromFirestore = async() => {
-    const tmp = await deleteFromFirestore(user, data.id.toString())
+    dispatch(removeFavorite({username : user, id:data.id}))
 
     setIconCol("grey")
   }
@@ -59,7 +61,7 @@ const MyComponent = ({item}) => {
         }
       }
     >
-      <Card.Title titleStyle={{color:"grey"}} title={data.title} subtitle={data.vote_average} left={(props) => <Avatar.Icon {...props} icon="star-outline" style={{backgroundColor: iconCol }} />} />
+      <Card.Title titleStyle={{color:"grey"}} title={data.title} subtitle={data.vote_average} right={(props) => <Avatar.Icon {...props} size={40} icon="star" color={iconCol} style={{backgroundColor: "white" }} />} />
     </TouchableOpacity>
     <TouchableOpacity
       onPress={() => {

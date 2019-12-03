@@ -2,20 +2,26 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native'
 import { Card, Title, IconButton, Colors } from 'react-native-paper';
 import { useNavigation } from 'react-navigation-hooks'
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {deleteFromFirestore} from '../helpers/vendors/Firebase'
+import { removeFavorite } from '../actions';
 
 const Favorite = ({item}) => {
+
+  console.log("item", item);
 
   const data = item
   const { navigate } = useNavigation();
   const darkMode = useSelector(state => state.darkModeReducer);
-  const user = useSelector(state => state.usersReducer).username
+  const user = useSelector(state => state.signReducer).email;
+
+  const dispatch = useDispatch();
 
 
   // call crud firebase (d)
   async function deleteThisFavorite() {
-    const tmp = await deleteFromFirestore(user, data.idFromApi.toString())
+    dispatch(removeFavorite({username : user, id:data.id}))
+
   }
 
   return (

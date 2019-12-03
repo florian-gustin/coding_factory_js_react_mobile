@@ -38,7 +38,12 @@
       "star": "Star icon color status",
       "hooks": "Hooks",
       "ux": "UX Approach",
-      "seum": "L'application a été développée avec aucun boilerplate"
+      "storerx": "store redux",
+      "video" : "Video player",
+      "btmbar":  "Barre de navigation",
+      "drawer" : "Drawer avancé nouvelle génération",
+      "seum": "L'application a été développée avec aucun boilerplate",
+      "navigationEvents" : "Mise à jour des components avec navigation events"
     },
     "navigation": {
       "home" : "Accueil",
@@ -47,5 +52,8 @@
       "about" : "A propos",
       "features": "Fonctions",
       "search": "Rechercher"
+    },
+    "search": {
+      "placeholder": "Rechercher un film..."
     }
 }

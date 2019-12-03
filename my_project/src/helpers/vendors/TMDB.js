@@ -19,3 +19,17 @@ export async function getTrailersFromMovie(id) {
   .catch((error) => console.error(error) )
 }
 
+export async function getMovieDetails(id) {
+  const url = "https://api.themoviedb.org/3/movie/"+ id +"?api_key=" + API_TOKEN + "&language="+ i118n.locale;
+  return fetch(url)
+  .then((response) => response.json())
+  .catch((error) => console.error(error) )
+}
+
+export async function getUpcoming() {
+  const url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_TOKEN + "&language="+ i118n.locale;
+  console.log(url);
+  return fetch(url)
+  .then((response) => response.json())
+  .catch((error) => console.error(error) )
+}

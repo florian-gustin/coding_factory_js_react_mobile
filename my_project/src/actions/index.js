@@ -21,11 +21,21 @@ export const getData = (v) => {
 
 // favorites list
 export const addFavorite = (v) => {
+    console.log("add favorite", v);
     return {
         type : "ADDFAV",
         payload : v
     }
 }
+
+export const setFavorite = (v) => {
+    console.log("set favorite", v);
+    return {
+        type : "SETFAV",
+        payload : v
+    }
+}
+
 export const removeFavorite = (v) => {
     return {
         type : "REMOVEFAV",

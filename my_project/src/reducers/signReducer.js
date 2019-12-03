@@ -1,6 +1,6 @@
 let init = {
-    email : "",
-    password : "",
+    email : "cedric@surflorianne.fr",
+    password : "123456",
     message: "",
     logged : false,
 }
@@ -8,7 +8,7 @@ let init = {
 const signReducer = (state = init, action) => {
     switch(action.type) {
         case "USERNAME":
-            return {...state, username: action.payload};
+            return {...state, email: action.payload};
         case "PASSWORD":
             return {...state, password: action.payload};
         case "CLEAR":

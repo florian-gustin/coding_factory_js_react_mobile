@@ -31,14 +31,19 @@
       "storefb": "Store Firebase",
       "api": "Call API",
       "favorites": "Favorites",
-      "languages": "Multiples translation available",
+      "languages": "Multiple translations available",
       "dk" : "Dark mode",
       "animations": "Animations",
       "loading": "Loading mode",
       "star": "Star icon color status",
       "hooks": "Hooks",
       "ux": "UX Approach",
-      "seum": "This app was made without any boilerplate"
+      "seum": "This app was made without any boilerplate",
+      "storerx": "store redux",
+      "video" : "video player for trailer",
+      "btmbar":  "bottom bar",
+      "drawer" : "advanced drawer navigation",
+      "navigationEvents" : "refresh ours components using navigation events"
     },
     "navigation": {
       "home" : "Home",
@@ -47,5 +52,8 @@
       "about" : "About",
       "features": "Features",
       "search": "Search"
+    },
+    "search": {
+      "placeholder": "Search a movie..."
     }
 }
